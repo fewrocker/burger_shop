@@ -1,0 +1,108 @@
+.burger-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: rgba(200,200,200,1);
+
+  height: 250px;
+
+  margin-bottom: 20px;
+
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}
+
+.burger-card-picture {
+  height: 250px;
+  background-size: cover;
+
+  flex: 0 0 40%;
+}
+
+.burger-card-description {
+  flex: 0 0 60%;
+  padding-left: 30px;
+}
+
+.burger-card-nome {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.burger-card-ingredientes {
+  color: rgba(80,80,80,1);
+  margin-bottom: 15px;
+}
+
+.burger-card-preco {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.burger-card-link {
+  text-decoration: none !important;
+}
+
+
+.bebida-card-nome {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.bebida-card-preco {
+  margin-bottom: 20px;
+}
+
+.bebida-card-comprar {
+
+}
+
+.bebida-modal-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bebida-modal-quantidade {
+  text-align: left;
+}
+
+.bebida-modal-picture {
+ flex: 0 0 50%;
+ height: 250px;
+ background-size: cover;
+}
+
+.bebida-modal-quantidade {
+  flex: 0 0 50%;
+}
+
+.bebida-modal-quantidade-controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100px;
+}
+
+.bebida-modal-quantidade-controller-minus {
+  font-size: 30px;
+  color: gray;
+}
+
+.bebida-modal-quantidade-controller-input {
+  margin-left: 30px;
+  width: 80px;
+}
+
+.bebida-modal-quantidade-controller-plus {
+  margin-left: 30px;
+
+  font-size: 30px;
+  color: green;
+}

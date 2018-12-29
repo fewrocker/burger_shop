@@ -1,0 +1,108 @@
+.wrapper-pedidoburger {
+
+}
+
+.container-pedidoburger {
+
+}
+
+@media screen and (max-width: 800px) {
+
+
+}
+
+@media screen and (max-width: 1600px) {
+
+
+}
+
+@media screen and (min-width: 1600px) {
+  .wrapper-pedidoburger {
+    background-color: lightblue;
+    padding: 40px 20vw;
+  }
+
+  .container-pedidoburger {
+    background-color: white;
+    padding: 20px 20px;
+    border: 1px solid rgba(150,150,150,1);
+    box-shadow: 1p x 1p x rgba(220,220,220,1);
+  }
+
+  .pedidoburger-title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;
+  }
+
+}
+
+.cada-ingrediente  {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+
+  background-color: rgba(220,220,220,1);
+  margin-bottom: 10px;
+  padding: 5px 2px 5px 20px;
+}
+
+.ingrediente-nome {
+  font-size: 25px;
+
+  flex: 0 0 40%;
+  text-align: left;
+}
+
+.ingrediente-quantidades {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+
+  flex: 0 0 60%;
+}
+
+.ingrediente-quantidade  {
+  border: 1px solid rgba(100,100,100,1);
+  border-radius: 5px;
+
+  flex: 0 0 30%;
+
+  &:hover {
+    background-color: rgba(180,180,180,1);
+    cursor:  pointer;
+  }
+}
+
+.ingrediente-ativo {
+  background-color: rgba(255,200,200,1)
+}
+
+.pedidoburger-ingrediente-categoria-title {
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 30px;
+}
+
+.burger-card-preco-build {
+  font-weight: bold;
+
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+
+  width: 200px;
+}
+
+.burger-card-preco-build-base {
+  font-size: 30px;
+}
+
+.burger-card-preco-build-extra {
+  font-size: 25px;
+}
+
+.pedidoburger-finalizar-btn {
+  margin-top: 50px;
+}

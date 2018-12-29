@@ -1,0 +1,96 @@
+<div class="wrapper-checkout">
+  <div class="container-checkout">
+
+    <h2 class="checkout-page-title">Concluir pedido</h2>
+
+    <h2 class="carrinho-subtitle text-center">
+      &nbsp;
+      <img src="https://static.thenounproject.com/png/153732-200.png" alt="" style="width: 50px;">
+      Lanches
+    </h2>
+
+    <div class="row carrinho-conteudo-checkout" style="">
+      <div class="col-xs-12">
+        <% @carrinho_burgers.each do |burger| %>
+          <div class="carrinho-item-burger">
+            <div class="carrinho-burger-header">
+              <h2 class="carrinho-burger-name"> <%= burger.burger %> </h2>
+              <% if burger.preco.to_s.split('.')[1].length == 2 %>
+                <h2 class="carrinho-burger-preco">$ <%= burger.preco %> </h2>
+              <% else %>
+                <h2 class="carrinho-burger-preco">$ <%= burger.preco %>0 </h2>
+              <% end %>
+              <h2 class="carrinho-burger-excluir">
+                <%= link_to pedidoburger_path + "/#{burger.id}",
+                  method: :delete,
+                  data: { confirm: "Tem certeza que deseja exluir #{burger.burger}?" } do %>
+                    <i class="fas fa-times-circle"></i>
+                  <% end %>
+              </h2>
+            </div>
+            <div class="carrinho-item-burger-ingredientes">
+
+              <% (0..Ingrediente.all.length).to_a.each do |num| %>
+                <% if burger.quantidades[num] == '1' %>
+                  <%= burger.ingredientes[num] %> (Normal)
+                <% elsif burger.quantidades[num] == '2' %>
+                  <%= burger.ingredientes[num] %> (Extra)
+                <% end %>
+
+                <% if (num + 1..Ingrediente.all.length).to_a.select { |item| burger.quantidades[item] == '1' || burger.quantidades[item] == '2'}.length > 0 && burger.quantidades[num] != '0' %>
+                  <%= ',' %>
+                <% end %>
+
+              <% end %>
+
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <h2 class="carrinho-subtitle text-center">
+      &nbsp;&nbsp;
+      <img src="https://static.thenounproject.com/png/583455-200.png" alt="" style="width: 50px;">
+      Bebidas
+    </h2>
+
+    <div class="row carrinho-conteudo-checkout" style="">
+      <% @carrinho_bebidas.each do |bebida| %>
+        <div class="col-xs-6">
+          <div class="carrinho-item-bebida">
+            <div class="carrinho-bebida-header">
+              <h2 class="carrinho-bebida-nome">
+                <%= bebida.bebida %> x <%= bebida.quantidade %>
+              </h2>
+              <h2 class="carrinho-bebida-preco-cont">
+                <% if bebida.preco.to_s.split('.')[1].length == 2 %>
+                  <h2 class="carrinho-bebida-preco">$ <%= bebida.preco %> </h2>
+                <% else %>
+                  <h2 class="carrinho-bebida-preco">$ <%= bebida.preco %>0 </h2>
+                <% end %>
+              </h2>
+              <h2 class="carrinho-burger-excluir">
+                <%= link_to pedidobebida_path + "/#{bebida.id}",
+                  method: :delete,
+                  data: { confirm: "Tem certeza que deseja exluir #{bebida.bebida}?" } do %>
+                    <i class="fas fa-times-circle"></i>
+                  <% end %>
+              </h2>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="checkout-options text-center">
+      <%= link_to cardapio_path, class: "checkout-btn" do %>
+        <button class="btn btn-proceedcheckout"> Concluir pedido </button>
+      <% end %>
+      <%= link_to cardapio_path, class: "checkout-btn" do %>
+        <button class="btn btn-returntostore"> Incluir mais itens </button>
+      <% end %>
+    </div>
+
+  </div>
+</div>

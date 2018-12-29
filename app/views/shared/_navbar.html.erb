@@ -1,0 +1,42 @@
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <%= link_to root_path, class: 'logo-link' do %>
+    <h2 class="site-logo">
+      <%= image_tag 'favicon.png', class: 'burger-logo-icon' %>
+      <span class="site-logo-part1">Burger</span><span class="site-logo-part2">Shop</span>
+    </h2>
+  <% end %>
+
+  <!-- Middle -->
+  <%= link_to cardapio_path do %>
+    <button class="btn btn-primary">Cardapio</button>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <!-- Profile picture with dropdown list -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <button class="options-button btn" id="navbar-wagon-menu" data-toggle="dropdown">Opções</button>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><a href="#">Meu perfil</a></li>
+          <li><a href="#">Meus pedidos</a></li>
+          <li><a href="#">Sair</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Meu perfil</a></li>
+        <li><a href="#">Meus pedidos</a></li>
+        <li><a href="#">Sair</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+.container-carrinho-header {
+  display: flex;
+  justify-content: space-between;
+
+  background-color: rgba(180,180,180,1);
+
+  padding: 10px 0;
+}
+
+.carrinho-title {
+  font-size: 30px;
+
+  color: rgba(50,50,50,1);
+
+  flex: 0 0 50%;
+}
+
+.carrinho-total {
+  flex: 0 0 50%;
+}
+
+.carrinho-total-preco {
+  font-size: 35px;
+
+  text-align: right;
+  padding-right: 20px;
+
+  color: black;
+}
+
+.carrinho-subtitle {
+  font-size: 30px;
+
+  color: rgba(70,70,70,1);
+}
+
+.carrinho-item-burger {
+  border: 1px solid black;
+
+  margin-bottom: 2px;
+}
+
+.carrinho-burger-header {
+  display:  flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: rgba(80,80,80,1);
+}
+
+.carrinho-burger-name  {
+  margin: 0;
+  color: white;
+  padding-left: 10px;
+
+  font-size: 20px;
+}
+
+.carrinho-burger-preco {
+  color: white;
+  padding: 0 10px 5px 0;
+  margin: 10px 0;
+
+  font-size: 20px;
+}
+
+.carrinho-burger-excluir {
+  padding-right:  30px;
+  margin: 10px 0;
+
+  i {
+    color: rgba(200,200,200,1);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+}
+
+.carrinho-item-burger-ingredientes {
+  background-color: rgba(150,150,150,1);
+  padding: 5px 0 5px 20px;
+}
+
+.carrinho-item-burger-ingrediente {
+
+}
+
+
+.carrinho-item-bebida {
+  border: 1px solid black;
+
+  margin-bottom: 5px;
+}
+
+.carrinho-bebida-header {
+  display:  flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: rgba(80,80,80,1);
+}
+
+.carrinho-bebida-nome  {
+  color: white;
+  margin: 10px 0;
+  padding-left: 10px;
+  padding-top: 10px;
+
+  font-size: 20px;
+
+  flex: 0 0 60%;
+}
+
+.carrinho-bebida-preco {
+  color: white;
+
+  font-size: 20px;
+  margin: 0;
+
+  flex: 0 0 20%;
+}
+
+.carrinho-bebida-excluir {
+  padding-right:  30px;
+  margin: 0;
+
+  i {
+    color: red;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  flex: 0 0 20%;
+}
+
+
+.concluir-compra-btn-box {
+  margin: 50px auto;
+}
+
+.concluir-pedido-btn {
+  width: 80%;
+  height: 50px;
+}

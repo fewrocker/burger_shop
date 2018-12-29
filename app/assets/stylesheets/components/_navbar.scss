@@ -1,32 +1,61 @@
 /* Main navbar */
 .navbar-wagon {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: white;
+  background: rgba(255,150,150,1);
   transition: all 0.3s ease;
   height: 70px;
-  padding: 0px 30px;
+  width: 100%;
+  padding: 0px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  a:link, a:hover, a:visited, a:active {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 /* Logo */
-.navbar-wagon-brand img {
-  height: 50px;
+.logo-link {
+  text-decoration: none;
+  padding-bottom: 10px;
 }
 
-/* User Avatar */
-.navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
+.burger-logo-icon {
+  width: 50px;
 }
+
+.site-logo-part1 {
+  font-size: 30px;
+  color: white;
+}
+
+.site-logo-part2 {
+  font-size: 40px;
+  color: white;
+}
+
 
 /* Right section */
 .navbar-wagon-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.options-button {
+  width: 200px;
+  background: white;
+  color: rgba(255,150,150,1);
+  border: 1px solid rgba(255,150,150,1);
+
+  &:hover {
+    color: rgba(255,150,150,1);
+    font-weight: bold;
+    background: white;
+    border: 1px solid rgba(255,150,150,1);
+  }
 }
 
 /* Basic navbar item */
@@ -54,14 +83,14 @@
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  color: rgba(50,50,50,1) !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
-  background: transparent !important;
-  color: black !important;
+  background: rgba(255,150,150,1) !important;
+  color: white !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';

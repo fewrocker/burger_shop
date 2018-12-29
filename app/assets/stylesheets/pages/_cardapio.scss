@@ -1,0 +1,70 @@
+.wrapper-carrinho {
+
+}
+
+.container-carrinho {
+
+}
+
+@media screen and (max-width: 800px) {
+
+
+}
+
+@media screen and (max-width: 1600px) {
+
+
+}
+
+@media screen and (min-width: 1600px) {
+  .wrapper-cardapio {
+    background-color: lightblue;
+    padding: 40px 50px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .container-carrinho {
+    flex: 0 0 28%;
+
+    margin-left: 25px;
+
+    background-color: rgba(200,200,200,1);
+    border: 1px solid black;
+
+    padding: 0 0px;
+
+    height: auto;
+  }
+
+  .container-cardapio {
+    flex: 0 0 70%;
+  }
+
+  .container-cardapio-lanches {
+    background-color: rgba(240,240,240,1);
+    padding: 10px 50px;
+    border: 1px solid rgba(150,150,150,1);
+    box-shadow: 1px 1px rgba(220,220,220,1);
+
+    margin-bottom: 50px;
+  }
+
+  .container-cardapio-bebidas {
+    background-color: rgba(240,240,240,1);
+    padding: 10px 50px;
+    border: 1px solid rgba(150,150,150,1);
+    box-shadow: 1px 1px rgba(220,220,220,1);
+
+    margin-bottom: 50px;
+  }
+
+  .cardapio-title-1 {
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+}
+
+
