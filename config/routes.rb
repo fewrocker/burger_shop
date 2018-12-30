@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  get 'pedidoburger/new'
-  get 'pedidoburger/create'
   devise_for :users
+
+  resources :endereco, only: [:index, :new, :create, :destroy]
+  get 'setendereco/:enderecoid', to: 'endereco#setendereco', as: 'setendereco'
+
+  resources :pedido, only: [:index, :show, :update]
 
   get 'cardapio', to: 'compra#cardapio', as: 'cardapio'
   get 'checkout', to: 'compra#checkout', as: 'checkout'
+  get 'addresspick', to: 'compra#addresspick', as: 'addresspick'
 
   get 'pedidoburger', to: 'pedidoburger#new', as: 'pedidoburger'
   post 'pedidoburger', to: 'pedidoburger#create'

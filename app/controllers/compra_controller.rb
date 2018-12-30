@@ -10,6 +10,13 @@ class CompraController < ApplicationController
       p.save
     end
 
+    # Criar mensagem de pedido em andamento caso haja algum
+    if Pedido.all.select { |pedido| pedido.user == current_user && (pedido.status == 'em preparo' || pedido.status == 'saiu para entrega') }.length != 0
+      @pedidos_em_aberto = true
+    else
+      @pedidos_em_aberto = false
+    end
+
     @lanches = Burger.all
     @bebidas_soft = Bebida.all.select { |bebida| bebida.categoria == 'Soft' }
     @bebidas_cervejas = Bebida.all.select { |bebida| bebida.categoria == 'Cervejas' }
@@ -33,6 +40,8 @@ class CompraController < ApplicationController
     @carrinho_burgers = @carrinho.pedidoburgers
     @carrinho_bebidas = @carrinho.pedidobebidas
 
+    @endereco = Endereco.find(@carrinho.enderecoid)
+
     @carrinho_total = 0
     @carrinho_burgers.each do |burger|
       @carrinho_total += burger.preco
@@ -40,12 +49,16 @@ class CompraController < ApplicationController
     @carrinho_bebidas.each do |bebida|
       @carrinho_total += bebida.preco
     end
-
-
-
   end
 
+  def addresspick
+    @user = current_user
 
+    # Se um endereco ja foi selecionado para esse carrinho, pular a etapa de selecionar endereco
+    redirect_to checkout_path if params[:possuiendereco] == "false"
 
+    @enderecos = @user.enderecos
 
+    @temendereco = @enderecos.length != 0
+  end
 end

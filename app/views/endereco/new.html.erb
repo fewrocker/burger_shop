@@ -1,0 +1,121 @@
+<div class="wrapper-checkout">
+  <div class="container-checkout">
+
+    <h2 class="novoendereco-title">
+      Novo endereço
+    </h2>
+
+    <form action="/endereco" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+      <div class="row endereco-form-row">
+        <div class="col-xs-4">
+          <!-- Estado -->
+          <div class="control-group">
+            <label class="control-label">Estado</label>
+            <div class="controls">
+              <select id="addressestado" name="addressestado" class="input-xlarge">
+                <option value="" selected="selected">(Selecione um estado)</option>
+                <option>AC</option>
+                <option>AL</option>
+                <option>AM</option>
+                <option>AP</option>
+                <option>BA</option>
+                <option>CE</option>
+                <option>DF</option>
+                <option>ES</option>
+                <option>GO</option>
+                <option>MA</option>
+                <option>MG</option>
+                <option>MS</option>
+                <option>MT</option>
+                <option>PA</option>
+                <option>PB</option>
+                <option>PE</option>
+                <option>PR</option>
+                <option>RJ</option>
+                <option>RN</option>
+                <option>RO</option>
+                <option>RR</option>
+                <option>RS</option>
+                <option>SC</option>
+                <option>SE</option>
+                <option>SP</option>
+                <option>TO</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-5">
+          <!-- Cidade-->
+          <div class="control-group">
+              <label class="control-label">Cidade</label>
+              <div class="controls">
+                  <input id="addresscidade" name="addresscidade" type="text"
+                  class="input-xlarge">
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row endereco-form-row">
+        <div class="col-xs-5">
+          <!-- Rua-->
+          <div class="control-group">
+              <label class="control-label">Rua</label>
+              <div class="controls">
+                <input id="addressrua" name="addressrua" type="text"
+                  class="input-xlarge">
+              </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <!-- Numero-->
+          <div class="control-group">
+              <label class="control-label">Número</label>
+              <div class="controls">
+                  <input id="addressnumero" name="addressnumero" type="text"
+                  class="input-xlarge">
+              </div>
+          </div>
+        </div>
+        <div class="col-xs-2">
+          <!-- Complemento-->
+          <div class="control-group">
+              <label class="control-label">Complemento</label>
+              <div class="controls">
+                  <input id="addresscomplemento" name="addresscomplemento" type="text"
+                  class="input-xlarge">
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-9">
+          <!-- Referencia-->
+          <div class="control-group">
+              <label class="control-label">Complemento</label>
+              <div class="controls">
+                  <input id="addressreferencia" name="addressreferencia" type="text"
+                  class="input-xlarge">
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="novoendereco-opcoes">
+
+        <input type="submit" value="Cadastrar endereço" class="btn btn-danger cadastrarendereco-btn">
+
+      </div>
+
+    </form>
+
+    <%= link_to addresspick_path, class: "novoendereco-voltar" do %>
+      <button class="btn btn-secondary">Voltar</button>
+    <% end %>
+
+  </div>
+</div>

@@ -20,9 +20,9 @@
       <div class="dropdown">
         <button class="options-button btn" id="navbar-wagon-menu" data-toggle="dropdown">Opções</button>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Meu perfil</a></li>
-          <li><a href="#">Meus pedidos</a></li>
-          <li><a href="#">Sair</a></li>
+          <li><%= link_to "Meus endereços", endereco_index_path %></li>
+          <li><%= link_to "Meus pedidos", pedido_index_path %></li>
+          <li><%= link_to "Sair", destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
     </div>
@@ -33,9 +33,9 @@
     <div class="dropdown">
       <i class="fas fa-bars dropdown-toggle" data-toggle="dropdown" role="button"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Meu perfil</a></li>
-        <li><a href="#">Meus pedidos</a></li>
-        <li><a href="#">Sair</a></li>
+        <li><%= link_to "Meus endereços", endereco_index_path %></li>
+        <li><%= link_to "Meus pedidos", pedido_index_path %></li>
+        <li><%= link_to "Sair", destroy_user_session_path, method: :delete %></li>
       </ul>
     </div>
   </div>

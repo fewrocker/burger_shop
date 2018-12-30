@@ -9,27 +9,20 @@
       Lanches
     </h2>
 
-    <div class="row carrinho-conteudo-checkout" style="">
-      <div class="col-xs-12">
+    <div class="carrinho-conteudo-checkout" style="">
+      <ul class="carrinho-lista-lanches">
         <% @carrinho_burgers.each do |burger| %>
-          <div class="carrinho-item-burger">
-            <div class="carrinho-burger-header">
-              <h2 class="carrinho-burger-name"> <%= burger.burger %> </h2>
-              <% if burger.preco.to_s.split('.')[1].length == 2 %>
-                <h2 class="carrinho-burger-preco">$ <%= burger.preco %> </h2>
-              <% else %>
-                <h2 class="carrinho-burger-preco">$ <%= burger.preco %>0 </h2>
-              <% end %>
-              <h2 class="carrinho-burger-excluir">
-                <%= link_to pedidoburger_path + "/#{burger.id}",
-                  method: :delete,
-                  data: { confirm: "Tem certeza que deseja exluir #{burger.burger}?" } do %>
-                    <i class="fas fa-times-circle"></i>
-                  <% end %>
-              </h2>
-            </div>
-            <div class="carrinho-item-burger-ingredientes">
-
+          <li class="carrinho-lista-cadalanche">
+            <h4 class="carrinho-lista-cadalanche-texto">
+              <strong> <%= burger.burger %> </strong>
+              ($
+                <% if burger.preco.to_s.split('.')[1].length == 2 %>
+                  <%= burger.preco %>
+                <% else %>
+                  <%= burger.preco %>0
+                <% end %>
+              ) -
+              <span class="carrinho-lista-cadalanche-ingredientes">
               <% (0..Ingrediente.all.length).to_a.each do |num| %>
                 <% if burger.quantidades[num] == '1' %>
                   <%= burger.ingredientes[num] %> (Normal)
@@ -40,14 +33,22 @@
                 <% if (num + 1..Ingrediente.all.length).to_a.select { |item| burger.quantidades[item] == '1' || burger.quantidades[item] == '2'}.length > 0 && burger.quantidades[num] != '0' %>
                   <%= ',' %>
                 <% end %>
-
               <% end %>
+              </span>
 
-            </div>
-          </div>
+              &nbsp;
+
+              <%= link_to pedidoburger_path + "/#{burger.id}?redir=checkout",
+                method: :delete,
+                data: { confirm: "Tem certeza que deseja exluir #{burger.burger}?"} do %>
+                  <span class="checkout-excluirlanche">Excluir lanche</span>
+              <% end %>
+            </h4>
+          </li>
         <% end %>
-      </div>
+      </ul>
     </div>
+
 
     <h2 class="carrinho-subtitle text-center">
       &nbsp;&nbsp;
@@ -55,36 +56,52 @@
       Bebidas
     </h2>
 
-    <div class="row carrinho-conteudo-checkout" style="">
-      <% @carrinho_bebidas.each do |bebida| %>
-        <div class="col-xs-6">
-          <div class="carrinho-item-bebida">
-            <div class="carrinho-bebida-header">
-              <h2 class="carrinho-bebida-nome">
-                <%= bebida.bebida %> x <%= bebida.quantidade %>
-              </h2>
-              <h2 class="carrinho-bebida-preco-cont">
+    <div class="carrinho-conteudo-checkout carrinho-conteudo-checkout-bebidas" style="">
+      <ul class="carrinho-lista-lanches">
+        <% @carrinho_bebidas.each do |bebida| %>
+          <li class="carrinho-lista-cadalanche">
+            <h4 class="carrinho-lista-cadalanche-texto">
+              <strong> <%= bebida.bebida %> x <%= bebida.quantidade %> </strong>
+              ($
                 <% if bebida.preco.to_s.split('.')[1].length == 2 %>
-                  <h2 class="carrinho-bebida-preco">$ <%= bebida.preco %> </h2>
+                  <%= bebida.preco %>
                 <% else %>
-                  <h2 class="carrinho-bebida-preco">$ <%= bebida.preco %>0 </h2>
+                  <%= bebida.preco %>0
                 <% end %>
-              </h2>
-              <h2 class="carrinho-burger-excluir">
-                <%= link_to pedidobebida_path + "/#{bebida.id}",
-                  method: :delete,
-                  data: { confirm: "Tem certeza que deseja exluir #{bebida.bebida}?" } do %>
-                    <i class="fas fa-times-circle"></i>
-                  <% end %>
-              </h2>
-            </div>
-          </div>
-        </div>
-      <% end %>
+              )
+
+              &nbsp;
+
+              <%= link_to pedidobebida_path + "/#{bebida.id}?redir=checkout",
+                method: :delete,
+                data: { confirm: "Tem certeza que deseja exluir #{bebida.bebida}?"} do %>
+                  <span class="checkout-excluirlanche">Excluir bebida</span>
+              <% end %>
+            </h4>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="checkout-total-cost">
+      <h4 class="checkout-total-text">
+        <strong>Total do pedido:</strong> $
+          <% if @carrinho_total.to_s.split('.')[1].length == 2 %>
+            <%= @carrinho_total %>
+          <% else %>
+            <%= @carrinho_total %>0
+          <% end %>
+      </h4>
+
+      <h4 class="checkout-endereco-entrega">
+        <strong>Endereço de entrega:</strong>
+        <%= @endereco.rua %>, <%= @endereco.numero %>, <%= @endereco.comp %> - <%= @endereco.estado %>, <%= @endereco.cidade %>
+        <%= link_to '(Alterar)', addresspick_path, class: 'alterar-endereco' %>
+      </h4>
     </div>
 
     <div class="checkout-options text-center">
-      <%= link_to cardapio_path, class: "checkout-btn" do %>
+      <%= link_to pedido_path(@carrinho, order: "concluir", precototal: "#{@carrinho_total}"), class: "checkout-btn", method: :patch do %>
         <button class="btn btn-proceedcheckout"> Concluir pedido </button>
       <% end %>
       <%= link_to cardapio_path, class: "checkout-btn" do %>

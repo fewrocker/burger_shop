@@ -90,10 +90,67 @@
             </div>
           </div>
         </div>
-    <% end %>
+      <% end %>
 
       <h1 class="pedidoburger-ingrediente-categoria-title">Queijos</h1>
       <% @ingredientes_queijo.each do |ing| %>
+        <div class="cada-ingrediente ingrediente-carne">
+          <h2 class="ingrediente-nome">
+            <%= ing.nome %>
+          </h2>
+          <div class="ingrediente-quantidades">
+
+            <% if !@ingredientes_base.include?(ing.nome) %>
+              <div class="ingrediente-quantidade ingrediente-ativo">
+            <% else %>
+              <div class="ingrediente-quantidade">
+            <% end %>
+              <p> <%= ing.possiveis_quantidades[0] %> </p>
+              <p class="ingrediente-preco"> $0.00 </p>
+            </div>
+
+            <% if @ingredientes_base.include?(ing.nome) %>
+              <div class="ingrediente-quantidade ingrediente-ativo">
+            <% else %>
+              <div class="ingrediente-quantidade">
+            <% end %>
+              <p> <%= ing.possiveis_quantidades[1] %> </p>
+              <% if (@ingredientes_base.include?(ing.nome)) %>
+                <p class="ingrediente-preco"> $0.00 </p>
+              <% else %>
+                <p class="ingrediente-preco">
+                  <% if ing.preco_normal.to_s.split('.')[1].length == 2 %>
+                    $<%= ing.preco_normal %>
+                  <% else %>
+                    $<%= ing.preco_normal %>0
+                  <% end %>
+                </p>
+              <% end %>
+            </div>
+            <div class="ingrediente-quantidade">
+              <p> <%= ing.possiveis_quantidades[2] %> </p>
+              <p class="ingrediente-preco">
+              <% if (@ingredientes_base.include?(ing.nome)) %>
+                <% if ing.preco_extra.to_s.split('.')[1].length == 2 %>
+                  $<%= ing.preco_extra %>
+                <% else %>
+                  $<%= ing.preco_extra %>0
+                <% end %>
+              <% else %>
+                <% if (ing.preco_normal + ing.preco_extra).to_s.split('.')[1].length == 2 %>
+                  $<%= ing.preco_normal + ing.preco_extra %>
+                <% else %>
+                  $<%= ing.preco_normal + ing.preco_extra %>0
+                <% end %>
+              <% end %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <h1 class="pedidoburger-ingrediente-categoria-title">Acompanhamentos</h1>
+      <% @ingredientes_acompanhamentos.each do |ing| %>
         <div class="cada-ingrediente ingrediente-carne">
           <h2 class="ingrediente-nome">
             <%= ing.nome %>
@@ -269,10 +326,10 @@
       <form action="/pedidoburger" method="post">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= hidden_field_tag :burger, @burger.nome %>
-        <% (@ingredientes_carne.length + @ingredientes_queijo.length + @ingredientes_salada.length + @ingredientes_molho.length).times do |count| %>
+        <% (Ingrediente.all.length).times do |count| %>
           <input type="text" name="ingrediente_quant_<%= count %>" class="ingrediente-quantidade-input" style="display: none;">
         <% end %>
-        <% (@ingredientes_carne.length + @ingredientes_queijo.length + @ingredientes_salada.length + @ingredientes_molho.length).times do |count| %>
+        <% (Ingrediente.all.length).times do |count| %>
           <input type="text" name="ingrediente_nome_<%= count %>" class="ingrediente-nome-input" style="display: none;">
         <% end %>
         <input type="text" name="preco" class="preco-input" style="display: none;">

@@ -1,6 +1,6 @@
 .wrapper-checkout {
   background: rgba(230,230,230,1);
-  height: calc(100vh - 70px);
+  min-height: calc(100vh - 70px);
 }
 
 .container-checkout {
@@ -36,6 +36,10 @@
 
 .carrinho-conteudo-checkout {
   padding: 0 10px;
+}
+
+.carrinho-conteudo-checkout-bebidas {
+  margin-bottom: 60px;
 }
 
 .checkout-options {
@@ -77,5 +81,38 @@
     color: rgba(255,150,150,1);
     background: white;
     border: 1px solid rgba(255,150,150,1);
+  }
+}
+
+
+
+.checkout-total-cost {
+  margin-top: 20px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(150,150,150,1);
+  padding-left: 10px;
+}
+
+.alterar-endereco {
+  color: rgba(255,100,100,1);
+
+  &:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgba(255,100,100,1);
+  }
+}
+
+.carrinho-lista-cadalanche-ingredientes {
+  font-size: 17px;
+  color: rgba(100,100,100,1);
+}
+
+.checkout-excluirlanche {
+  color: rgba(255,100,100,1);
+  text-decoration: none;
+
+  &:hover {
+    color: rgba(255,100,100,1);
   }
 }

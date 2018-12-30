@@ -12,6 +12,7 @@ class PedidoburgerController < ApplicationController
 
     @ingredientes_carne = Ingrediente.all.select { |ing| ing.categoria == 'Carnes' }
     @ingredientes_queijo = Ingrediente.all.select { |ing| ing.categoria == 'Queijos' }
+    @ingredientes_acompanhamentos = Ingrediente.all.select { |ing| ing.categoria == 'Acompanhamentos' }
     @ingredientes_salada = Ingrediente.all.select { |ing| ing.categoria == 'Salada' }
     @ingredientes_molho = Ingrediente.all.select { |ing| ing.categoria == 'Molhos' }
 
@@ -23,10 +24,9 @@ class PedidoburgerController < ApplicationController
 
     number_of_ingredients = Ingrediente.all.length
 
-
     b = Pedidoburger.new
     b.burger = params[:burger]
-    b.pedido = current_user.pedidos.select { |pedido| pedido.status = 'em compras'}[0]
+    b.pedido = current_user.pedidos.select { |pedido| pedido.status == 'em compras'}[0]
     number_of_ingredients.times do |num|
       b.ingredientes << params["ingrediente_nome_#{num}".to_sym]
       b.quantidades << params["ingrediente_quant_#{num}".to_sym]
@@ -41,6 +41,12 @@ class PedidoburgerController < ApplicationController
     b = Pedidoburger.find(params[:id])
     b.destroy
 
-    redirect_to cardapio_path
+    redir = params[:redir]
+
+    if redir == "checkout"
+      redirect_to checkout_path
+    else
+      redirect_to cardapio_path
+    end
   end
 end

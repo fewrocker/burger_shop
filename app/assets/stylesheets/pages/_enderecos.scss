@@ -1,0 +1,56 @@
+.selecionarendereco-title {
+  font-size: 40px;
+  color: rgba(70,70,70,1);
+
+  margin-bottom: 50px;
+}
+
+.selecionarendereco-noadress-title {
+  font-size: 25px;
+  color: rgba(100,100,100,1);
+
+  margin-bottom: 50px;
+}
+
+.addresspick-cadaendereco {
+  border: 1px solid rgba(255,200,200,1);
+  padding: 10px 100px 10px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+
+  &:hover {
+    background-color: rgba(255,200,200,0.2);
+    cursor: pointer;
+  }
+
+  a:link, a:hover, a:active, a:visited {
+    text-decoration: none;
+  }
+}
+
+.addresspick-excluirendereco {
+  color: rgba(255,100,100,1);
+
+  &:hover {
+    color: rgba(50,50,50,1);
+    text-decoration: underline;
+  }
+}
+
+.addresspick-estadocidade {
+  font-size: 20px;
+  text-decoration: none;
+  color: rgba(50,50,50,1);
+}
+
+.addresspick-ruanumerocomp {
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgba(100,100,100,1);
+}
+

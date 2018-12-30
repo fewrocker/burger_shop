@@ -1,5 +1,13 @@
-<div class="wrapper-cardapio">
+<% if @pedidos_em_aberto %>
+  <div class="alert-pedidosemaberto text-center">
+    <h4 class="alert-pedidosemaberto-text">
+      Você possui pedidos em andamento
+      <%= link_to "(Ver pedidos)", pedido_index_path %>
+    </h4>
+  </div>
+<% end %>
 
+<div class="wrapper-cardapio">
   <div class="container-cardapio">
     <div class="container-cardapio-lanches">
       <h1 class="cardapio-title-1">
@@ -18,12 +26,16 @@
                     <%= lanche.nome %>
                   </div>
                   <div class="burger-card-ingredientes">
-                    <% lanche.ingredientes_base.each do |ingrediente| %>
-                      <% if ingrediente != lanche.ingredientes_base.last %>
-                        <%= ingrediente %>,
-                      <% else %>
-                        <%= ingrediente %>
+                    <% if lanche.nome != 'x-tudo-real' %>
+                      <% lanche.ingredientes_base.each do |ingrediente| %>
+                        <% if ingrediente != lanche.ingredientes_base.last %>
+                          <%= ingrediente %>,
+                        <% else %>
+                          <%= ingrediente %>
+                        <% end %>
                       <% end %>
+                    <% else %>
+                      Literalmente tudo
                     <% end %>
                   </div>
                   <div class="burger-card-preco">
@@ -211,7 +223,7 @@
     </div>
 
     <div class="concluir-compra-btn-box text-center">
-      <%= link_to checkout_path do %>
+      <%= link_to "/addresspick?possuiendereco=#{@carrinho.enderecoid.nil?}" do %>
         <button class="btn btn-success concluir-pedido-btn"> Concluir pedido </button>
       <% end %>
     </div>
