@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
     # Definicoes dos horarios de funcionamento
     @open_hours = []
-    # Dias da semana vao de 0 ate 6, sendo que 0 é domingo
+    # Dias da semana vao de 0 ate 6, sendo que 0 é doming
     # Para o horario de fechamento: 24h significa meia noite do proximo dia, 26h significa ate
     # 2 horas da manha do dia seguinte, etc
     # Segunda feira: 08h as 22h
