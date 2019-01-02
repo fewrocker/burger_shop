@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: :home
+
   def home
     # Se o usuario esta logo, redirecionar para cardápio
     redirect_to cardapio_path if user_signed_in?
