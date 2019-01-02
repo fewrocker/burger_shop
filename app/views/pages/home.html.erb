@@ -1,2 +1,57 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(200,101,168,0.3) 0%, rgba(200,36,61,0.3) 50%), url('http://shrimpandburger.co.uk/wp-content/uploads/2013/06/Shrimp-and-Burger-restaurant-U.jpg');">
+  <div class="banner-content">
+    <h1>BurgerShop</h1>
+    <p>Sanduiches maravilhosos e baratos</p>
+    <%= link_to "Faça seu pedido", cardapio_path, class: "btn btn-danger btn-lg" %>
+    <h2 class="empty-space" style="height: 10vh;"></h2>
+    <div class="home-infosextras">
+      <p>Horário de funcionamento:
+        <span class="home-horariofuncionamentotext">
+          <% if @status == 'Fechado' %>
+            <span class="home-horariofuncionamento horario-fechado" id="home-horariofuncionamentohover">
+          <% else %>
+            <span class="home-horariofuncionamento horario-aberto" id="home-horariofuncionamentohover">
+          <% end %>
+          <%= @status %>
+          </span>
+        </span>
+      </p>
+      <p>Contato: (31) 3223-3223 </p>
+    </div>
+  </div>
+</div>
+
+<div id="home-horariofuncionamentopopup"=>
+  <% (0..6).to_a.each do |weekday| %>
+    <% if weekday == @weekday_now %>
+      <p class="home-horariofuncionamento-dia dia-ativo">
+    <% else %>
+      <p class="home-horariofuncionamento-dia">
+    <% end %>
+      <%= @weekday_name[weekday] %>
+      <%= @open_hours[weekday][0] %>h às
+      <% if @open_hours[weekday][1] >= 24 %>
+        0<%= @open_hours[weekday][1] - 24 %>h
+      <% else %>
+        <%= @open_hours[weekday][1] %>h
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+
+<script>
+  horariosHover = document.getElementById('home-horariofuncionamentohover')
+  horariosPopup = document.getElementById('home-horariofuncionamentopopup')
+  horariosPopup.style.display = 'none'
+
+  horariosHover.addEventListener("mouseover", function(){
+    horariosPopup.style.display = '';
+    console.log('in');
+  });
+
+  horariosHover.addEventListener("mouseleave", function(){
+    horariosPopup.style.display = 'none';
+    console.log('out');
+  });
+</script>

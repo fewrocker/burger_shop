@@ -1,4 +1,17 @@
 class EnderecoController < ApplicationController
+
+  def index
+    @user = current_user
+
+    # Se um endereco ja foi selecionado para esse carrinho, pular a etapa de selecionar endereco
+    redirect_to checkout_path if params[:possuiendereco] == "false"
+
+    @enderecos = @user.enderecos
+
+    @temendereco = @enderecos.length != 0
+  end
+
+
   def new
   end
 

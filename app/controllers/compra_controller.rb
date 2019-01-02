@@ -17,14 +17,17 @@ class CompraController < ApplicationController
       @pedidos_em_aberto = false
     end
 
+    # Separar os itens do cardapio
     @lanches = Burger.all
     @bebidas_soft = Bebida.all.select { |bebida| bebida.categoria == 'Soft' }
     @bebidas_cervejas = Bebida.all.select { |bebida| bebida.categoria == 'Cervejas' }
 
+    # Montar o carrinho do usuário que está em aberto
     @carrinho = Pedido.all.select { |pedido| pedido.user == current_user && pedido.status == 'em compras' }[0]
     @carrinho_burgers = @carrinho.pedidoburgers
     @carrinho_bebidas = @carrinho.pedidobebidas
 
+    # Calcula o total do preço do carrinho a partir dos componentes
     @carrinho_total = 0
     @carrinho_burgers.each do |burger|
       @carrinho_total += burger.preco

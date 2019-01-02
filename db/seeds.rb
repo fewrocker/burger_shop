@@ -249,7 +249,7 @@ b.save
 p "Criado bebida #{b.nome}"
 
 b = Bebida.new
-b.nome = "Agua mineral 600ml"
+b.nome = "Agua mineral 500ml"
 b.categoria = "Soft"
 b.preco_base = 2.50
 b.picture_url = "https://imagens.gimba.com.br/objetosmidia/ExibirObjetoMidia?Id=56446"
@@ -257,10 +257,10 @@ b.save
 p "Criado bebida #{b.nome}"
 
 b = Bebida.new
-b.nome = "Mate Couro 1 litro"
+b.nome = "Mate Couro 2L"
 b.categoria = "Soft"
-b.preco_base = 6.00
-b.picture_url = "http://acaiburguerepizzaria.com.br/wp-content/uploads/2016/10/mate-couro-de-1l.jpg"
+b.preco_base = 8.00
+b.picture_url = "https://decisaoentrega.fbitsstatic.net/img/p/refrigerante-mate-couro-tradicional-2l-263741/430607-2.jpg?w=420&h=420&v=no-change"
 b.save
 p "Criado bebida #{b.nome}"
 
@@ -273,7 +273,7 @@ b.save
 p "Criado bebida #{b.nome}"
 
 b = Bebida.new
-b.nome = "Guarana Dolly 2 litros"
+b.nome = "Guarana Dolly 2L"
 b.categoria = "Soft"
 b.preco_base = 7.50
 b.picture_url = "https://nagumonew.vteximg.com.br/arquivos/ids/175320-1000-1000/REFRIGERANTE-DE-GUARANA-DOLLY-2-LITROS-616348_1.jpg?v=636775499948430000"

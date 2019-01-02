@@ -14,7 +14,7 @@
     <% pedido_count = 0 %>
 
     <% @pedidos_em_andamento.each do |pedido| %>
-      <div class="pedido-index-user-cadapedido-header <%= "pedido-header#{pedido_count}" %>">
+      <div class="pedido-index-user-cadapedido-header <%= "pedido-header#{pedido_count}" %> pedido-header-andamento">
         <h3 class="pedido-index-user-pedido-id">
           Pedido #<%= "#{pedido.id}" %>
         </h3>
@@ -78,7 +78,7 @@
     <% end %>
 
     <% @pedidos_concluidos.each do |pedido| %>
-      <div class="pedido-index-user-cadapedido-header <%= "pedido-header#{pedido_count}" %>">
+      <div class="pedido-index-user-cadapedido-header <%= "pedido-header#{pedido_count}" %> pedido-header-concluido">
         <h3 class="pedido-index-user-pedido-id">
           Pedido #<%= "#{pedido.id}" %>
         </h3>

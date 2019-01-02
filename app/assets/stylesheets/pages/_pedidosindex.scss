@@ -3,11 +3,7 @@
 }
 
 .pedido-index-user-cadapedido-header {
-  background: rgba(200,200,200,1);
-
   width: 100%;
-
-  padding: 35px 40px;
 
   display: flex;
   align-items: center;
@@ -19,6 +15,17 @@
 
   margin-top: 10px;
 }
+
+.pedido-header-concluido {
+  background: rgba(200,200,200,1);
+  padding: 10px 40px;
+}
+
+.pedido-header-andamento {
+  background: rgba(255,200,200,1);
+  padding: 35px 40px;
+}
+
 
 .pedido-index-user-cadapedido-body {
   background: rgba(250,250,250,1);
@@ -43,3 +50,4 @@
 .pedido-index-user-pedido-tempoestimado {
   font-size: 20px;
 }
+

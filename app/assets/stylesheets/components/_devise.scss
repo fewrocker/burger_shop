@@ -1,0 +1,48 @@
+.wrapper-devise {
+  background: rgba(230,230,230,1);
+  min-height: calc(100vh - 70px);
+
+  background-image: linear-gradient(-225deg, rgba(200,101,168,0.3) 0%, rgba(200,36,61,0.3) 50%), url('http://shrimpandburger.co.uk/wp-content/uploads/2013/06/Shrimp-and-Burger-restaurant-U.jpg');
+
+  background-size: cover !important;
+}
+
+.container-devise {
+  background: white;
+  border: 1px solid rgba(150,150,150,1);
+  box-shadow: 1px 1px rgba(100,100,100,1);
+
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 50vw;
+}
+
+
+@media screen and (min-width: 1600px) {
+  .wrapper-devise {padding: 20px 400px;}
+  .container-devise {padding: 20px 50px;}
+}
+
+@media screen and (max-width: 1600px) {
+  .wrapper-devise {padding: 50px 80px;}
+  .container-devise {padding: 50px 100px;}
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper-devise {padding: 50px 10px;}
+  .container-devise {padding: 10px 10px;}
+}
+
+.site-logo-devise {
+  color: rgba(255,100,100,1);
+  margin-bottom: 20 px;
+
+  background-color:  rgba(255,200,200,0.5);
+
+  padding: 50px 0;
+}
+
+.devise-shared-links {
+  margin-top: 20px;
+}

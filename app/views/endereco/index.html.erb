@@ -1,0 +1,45 @@
+<div class="wrapper-checkout">
+  <div class="container-checkout">
+
+    <h2 class="selecionarendereco-title">
+      Meus endereços
+    </h2>
+
+    <% if @temendereco %>
+
+      <% @enderecos.each do |endereco| %>
+
+        <div class="addresspick-cadaendereco">
+
+          <h4 class="addresspick-ruanumerocomp">
+            <span class="addresspick-ruanumerocomp">
+              <%= endereco.rua %>, <%= endereco.numero %>, <%= endereco.comp %> -
+            </span>
+            <span class="addresspick-ruanumerocomp">
+              <%= endereco.cidade %> - <%= endereco.estado %>
+            </span>
+          </h4>
+
+          <%= link_to "Excluir endereço", endereco_path(endereco), :method => :delete, class: "addresspick-excluirendereco", data: { confirm: "Tem certeza que deseja este endereço?" }%>
+        </div>
+
+      <% end %>
+
+      <%= link_to new_endereco_path do %>
+        <button class="btn btn-danger">Cadastrar endereço</button>
+      <% end %>
+
+    <% else %>
+
+      <h4 class="selecionarendereco-noadress-title">
+        Você ainda não possui nenhum endereço cadastrado
+      </h4>
+
+      <%= link_to new_endereco_path do %>
+        <button class="btn btn-danger">Cadastrar endereço</button>
+      <% end %>
+
+    <% end %>
+
+  </div>
+</div>
