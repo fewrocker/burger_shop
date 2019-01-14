@@ -1,7 +1,7 @@
-<div class="wrapper-checkout">
+  <div class="wrapper-checkout">
   <div class="container-checkout">
 
-    <h2 class="checkout-page-title">Concluir pedido</h2>
+    <h2 class="checkout-page-title">Resumo do pedido</h2>
 
     <h2 class="carrinho-subtitle text-center">
       &nbsp;
@@ -14,14 +14,14 @@
         <% @carrinho_burgers.each do |burger| %>
           <li class="carrinho-lista-cadalanche">
             <h4 class="carrinho-lista-cadalanche-texto">
-              <strong> <%= burger.burger %> </strong>
+              <span class="carrinho-lanche-nome-checkout"><strong> <%= burger.burger %> </strong>
               ($
                 <% if burger.preco.to_s.split('.')[1].length == 2 %>
                   <%= burger.preco %>
                 <% else %>
                   <%= burger.preco %>0
                 <% end %>
-              ) -
+              ) - </span>
               <span class="carrinho-lista-cadalanche-ingredientes">
               <% (0..Ingrediente.all.length).to_a.each do |num| %>
                 <% if burger.quantidades[num] == '1' %>
@@ -61,14 +61,14 @@
         <% @carrinho_bebidas.each do |bebida| %>
           <li class="carrinho-lista-cadalanche">
             <h4 class="carrinho-lista-cadalanche-texto">
-              <strong> <%= bebida.bebida %> x <%= bebida.quantidade %> </strong>
+              <span class="carrinho-lanche-nome-checkout"><strong> <%= bebida.bebida %> x <%= bebida.quantidade %> </strong>
               ($
                 <% if bebida.preco.to_s.split('.')[1].length == 2 %>
                   <%= bebida.preco %>
                 <% else %>
                   <%= bebida.preco %>0
                 <% end %>
-              )
+              ) </span>
 
               &nbsp;
 

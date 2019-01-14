@@ -1,10 +1,12 @@
 .wrapper-devise {
   background: rgba(230,230,230,1);
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh);
 
   background-image: linear-gradient(-225deg, rgba(200,101,168,0.3) 0%, rgba(200,36,61,0.3) 50%), url('http://shrimpandburger.co.uk/wp-content/uploads/2013/06/Shrimp-and-Burger-restaurant-U.jpg');
 
   background-size: cover !important;
+
+  padding: 50px 0;
 }
 
 .container-devise {
@@ -16,27 +18,13 @@
   margin-right: auto;
 
   width: 50vw;
-}
 
-
-@media screen and (min-width: 1600px) {
-  .wrapper-devise {padding: 20px 400px;}
-  .container-devise {padding: 20px 50px;}
-}
-
-@media screen and (max-width: 1600px) {
-  .wrapper-devise {padding: 50px 80px;}
-  .container-devise {padding: 50px 100px;}
-}
-
-@media screen and (max-width: 1000px) {
-  .wrapper-devise {padding: 50px 10px;}
-  .container-devise {padding: 10px 10px;}
+  padding: 50px;
 }
 
 .site-logo-devise {
   color: rgba(255,100,100,1);
-  margin-bottom: 20 px;
+  margin-bottom: 20px;
 
   background-color:  rgba(255,200,200,0.5);
 
@@ -45,4 +33,78 @@
 
 .devise-shared-links {
   margin-top: 20px;
+}
+
+.form-actions input {
+  width: 20vw;
+
+  background: $vermelho-leve;
+
+  &:hover {
+    background: $vermelho-medio;
+  }
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper-devise {
+    padding: 20px 10px;
+
+    display: flex;
+    align-items: center;
+  }
+  .container-devise {
+    padding: 10px 10px;
+    width: 90vw;
+
+    h2 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  }
+  .site-logo-devise {
+    font-size: 20px;
+    padding: 10px 0;
+    margin: 0;
+
+    img {
+      width: 50px;
+    }
+  }
+
+  .form-group {
+    margin: 0;
+  }
+
+  .form-check-label {
+    font-size: 15px;
+    font-weight: normal;
+    padding-left: 10px;
+  }
+
+  .form-control {
+    height: 30px;
+  }
+
+  .burger-logo-devise {
+    width: 30px !important;
+  }
+
+  .form-control-label {
+    font-size: 15px !important;
+  }
+
+  .devise-shared-links a {
+    font-size: 15px;
+  }
+
+  .form-actions input {
+    width: 100%;
+  }
+
+  .form-group>::placeholder {
+    font-size: 10px;
+  }
 }

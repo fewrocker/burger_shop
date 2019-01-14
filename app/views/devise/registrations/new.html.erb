@@ -3,7 +3,7 @@
   <div class="container-devise">
 
     <h2 class="site-logo-devise text-center">
-      <%= image_tag 'favicon.png', class: 'burger-logo-icon' %> <br>
+      <%= image_tag 'favicon.png', class: 'burger-logo-icon burger-logo-devise' %> <br>
       BurgerShop
     </h2>
 
@@ -19,13 +19,13 @@
                     input_html: { autocomplete: "email" }%>
         <%= f.input :password,
                     required: true,
-                    hint: ("No mínimo #{@minimum_password_length} caracteres" if @minimum_password_length),
+                    placeholder: "No mínimo #{@minimum_password_length} caracteres",
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
       </div>
-
+<br>
       <div class="form-actions">
         <%= f.button :submit, "Concluir" %>
       </div>

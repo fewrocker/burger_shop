@@ -2,14 +2,14 @@
   <div class="container-devise">
 
     <h2 class="site-logo-devise text-center">
-      <%= image_tag 'favicon.png', class: 'burger-logo-icon' %> <br>
+      <%= image_tag 'favicon.png', class: 'burger-logo-icon burger-logo-devise' %> <br>
       BurgerShop
     </h2>
 
     <h2>Conectar-se</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
+      <div class="form-inputs devise-form">
         <%= f.input :email,
                     required: false,
                     autofocus: true,
@@ -20,7 +20,9 @@
         <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
 
-      <div class="form-actions">
+      <br>
+
+      <div class="form-actions text-center">
         <%= f.button :submit, "Conectar" %>
       </div>
     <% end %>

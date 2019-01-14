@@ -146,3 +146,115 @@
   width: 80%;
   height: 50px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .container-carrinho-header {
+    padding: 10px 0;
+  }
+
+  .carrinho-title {
+    font-size: 20px;
+  }
+
+  .carrinho-total-preco {
+    font-size: 22px;
+  }
+
+  .carrinho-subtitle {
+    font-size: 20px;
+    margin: 5px 0;
+
+    color: rgba(70,70,70,1);
+
+    img {
+      width: 35px !important;
+    }
+  }
+
+  .carrinho-burger-name  {
+    font-size: 15px;
+  }
+
+  .carrinho-burger-preco {
+    color: white;
+    padding: 0 10px 5px 0;
+    margin: 5px 0;
+
+    font-size: 15px;
+  }
+
+  .carrinho-burger-excluir {
+    padding-right: 30px;
+    margin: 0;
+
+    i {
+      font-size: 20px;
+    }
+
+    position: relative;
+    bottom: 6px;
+
+  }
+
+  .carrinho-item-burger-ingredientes {
+    background-color: rgba(150,150,150,1);
+    padding: 5px 0 5px 20px;
+  }
+
+  .carrinho-item-burger-ingrediente {
+    font-size: 12px;
+
+  }
+
+  .carrinho-item-bebida {
+
+    margin-bottom: 5px;
+  }
+
+  .carrinho-bebida-nome  {
+    color: white;
+    margin: 10px 0;
+    padding-left: 10px;
+    padding-top: 10px;
+
+    font-size: 15px;
+
+    flex: 0 0 60%;
+  }
+
+  .carrinho-bebida-preco {
+    color: white;
+
+    font-size: 14px;
+    margin: 0;
+
+    flex: 0 0 20%;
+  }
+
+  .carrinho-bebida-excluir {
+    padding-right:  10px;
+    margin: 0;
+
+    i {
+      color: red;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    flex: 0 0 20%;
+  }
+
+
+  .concluir-compra-btn-box {
+    margin: 50px auto;
+  }
+
+  .concluir-pedido-btn {
+    width: 80%;
+    height: 50px;
+  }
+
+}

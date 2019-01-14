@@ -5,9 +5,11 @@
 .pedido-index-user-cadapedido-header {
   width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   &:hover {
     cursor: pointer
@@ -49,5 +51,58 @@
 
 .pedido-index-user-pedido-tempoestimado {
   font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .pedido-index-user-title {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .pedido-index-user-cadapedido-header {
+    padding: 10px;
+  }
+
+  .pedido-header-concluido {
+    background: rgba(200,200,200,1);
+    padding: 10px 10px;
+  }
+
+  .pedido-header-andamento {
+    background: rgba(255,200,200,1);
+    padding: 10px 10px;
+  }
+
+  .pedido-index-user-cadapedido-body {
+    padding: 10px 10px;
+  }
+
+  .pedido-index-user-pedido-id {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+
+  .pedido-index-user-pedido-status {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+
+  .pedido-index-user-pedido-horario {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+
+  .pedido-index-user-pedido-tempoestimado {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+
+  .pedido-index-user-cadapedido-body-informacao {
+    font-size: 15px;
+  }
+
+  .pedido-index-user-cadapedido-body-item {
+    font-size: 15px;
+  }
 }
 

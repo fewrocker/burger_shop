@@ -1,28 +1,14 @@
 .wrapper-checkout {
   background: rgba(230,230,230,1);
   min-height: calc(100vh - 70px);
+  padding: 50px 400px;
 }
 
 .container-checkout {
   background: white;
   border: 1px solid rgba(150,150,150,1);
   box-shadow: 1px 1px rgba(100,100,100,1);
-}
-
-
-@media screen and (min-width: 1600px) {
-  .wrapper-checkout {padding: 50px 400px;}
-  .container-checkout {padding: 50px 50px;}
-}
-
-@media screen and (max-width: 1600px) {
-  .wrapper-checkout {padding: 50px 80px;}
-  .container-checkout {padding: 50px 100px;}
-}
-
-@media screen and (max-width: 1000px) {
-  .wrapper-checkout {padding: 50px 10px;}
-  .container-checkout {padding: 10px 10px;}
+  padding: 50px 50px;
 }
 
 
@@ -45,17 +31,19 @@
 .checkout-options {
   margin-top: 50px;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
   margin-left: auto;
   margin-right: auto;
   width: 25vw;
-}
 
-.checkout-btn {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 
+  @media screen and (max-width: 768px) {
+    width: 75vw;
+  }
 }
 
 .btn-proceedcheckout {
@@ -83,8 +71,6 @@
     border: 1px solid rgba(255,150,150,1);
   }
 }
-
-
 
 .checkout-total-cost {
   margin-top: 20px;
@@ -115,4 +101,61 @@
   &:hover {
     color: rgba(255,100,100,1);
   }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .wrapper-checkout {padding: 50px 10px;}
+  .container-checkout {padding: 10px 10px;}
+
+  .checkout-page-title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .checkout-page-subtitle {
+    font-size: 16px;
+  }
+
+  .carrinho-lista-cadalanche {
+    font-size: 20px
+
+  }
+
+  .carrinho-lanche-nome-checkout {
+    font-size: 18px;
+  }
+
+  .carrinho-lista-lanches {
+    padding-left: 20px;
+  }
+
+  .carrinho-lista-cadalanche-ingredientes {
+    font-size: 12px;
+    color: rgba(100,100,100,1);
+  }
+
+  .checkout-excluirlanche {
+    font-size: 14px;
+  }
+
+  .checkout-total-text {
+    font-size: 20px;
+  }
+
+  .checkout-endereco-entrega {
+    font-size: 18px;
+  }
+
+  .btn-proceedcheckout {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .btn-returntostore {
+    width: 80%;
+  }
+
 }

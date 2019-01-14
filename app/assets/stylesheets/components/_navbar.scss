@@ -36,6 +36,20 @@
   color: white;
 }
 
+// Mobile adaptations
+@media screen and (max-width: 768px) {
+  .navbar-wagon {
+    padding: 0 20px;
+  }
+  .site-logo-part1 {
+    font-size: 20px;
+  }
+
+  .site-logo-part2 {
+    font-size: 23px;
+  }
+}
+
 
 /* Right section */
 .navbar-wagon-right {

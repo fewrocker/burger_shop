@@ -52,3 +52,16 @@
     margin-top: 20px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .novoendereco-title {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(50,50,50,1);
+    margin-bottom: 30px;
+  }
+
+  .control-label {
+    font-size: 15px;
+  }
+}

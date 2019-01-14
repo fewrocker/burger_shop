@@ -47,6 +47,35 @@
   text-decoration: none !important;
 }
 
+.bebida-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: rgba(200,200,200,1);
+
+  height: 250px;
+
+  margin-bottom: 20px;
+
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}
+
+.bebida-card-picture {
+  height: 250px;
+  background-size: cover;
+
+  flex: 0 0 40%;
+}
+
+.bebida-card-description {
+  flex: 0 0 60%;
+  padding-left: 20px;
+}
+
 
 .bebida-card-nome {
   font-size: 20px;
@@ -105,4 +134,106 @@
 
   font-size: 30px;
   color: green;
+}
+
+
+// Mobile adaptations
+@media screen and (max-width: 768px) {
+  .burger-card {
+    height: 150px;
+    margin-bottom: 10px;
+  }
+
+  .burger-card-picture {
+    height: 150px;
+  }
+
+  .burger-card-description {
+    padding-left: 10px;
+  }
+
+  .burger-card-nome {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .burger-card-ingredientes {
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+
+  .burger-card-preco {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .bebida-card {
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .bebida-card-picture {
+    height: 100px;
+  }
+
+  .bebida-card-description {
+    padding-left: 10px;
+  }
+
+  .bebida-card-nome {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  .bebida-card-preco {
+    margin-bottom: 3px;
+    font-size: 16px;
+  }
+
+  .adicionar-bebida-btn {
+    font-size: 15px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+
+  .bebida-modal-quantidade {
+    text-align: left;
+  }
+
+  .bebida-modal-picture {
+   flex: 0 0 40%;
+   height: 150px;
+   background-size: cover;
+  }
+
+  .bebida-modal-quantidade {
+    flex: 0 0 60%;
+    padding-left: 20px;
+
+    h4 {
+      font-size: 18px;
+    }
+  }
+
+  .bebida-modal-quantidade-controller-minus {
+    font-size: 20px;
+    color: gray;
+  }
+
+  .bebida-modal-quantidade-controller-input {
+    margin-left: 20px;
+    width: 80px;
+  }
+
+  .bebida-modal-quantidade-controller-plus {
+    margin-left: 30px;
+
+    font-size: 20px;
+    color: green;
+  }
+
 }

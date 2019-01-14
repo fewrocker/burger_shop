@@ -1,13 +1,3 @@
-@media screen and (max-width: 800px) {
-
-
-}
-
-@media screen and (max-width: 1600px) {
-
-
-}
-
 @media screen and (min-width: 1600px) {
   .wrapper-cardapio {
     background-color: lightblue;
@@ -56,8 +46,17 @@
     font-size: 40px;
     font-weight: 600;
   }
-
 }
+
+@media screen and (max-width: 768px) {
+  .cardapio-title-1 {
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 20px;
+  }
+}
+
+// ------------
 
 .alert-pedidosemaberto {
   background-color: rgba(255,100,100,1);
@@ -76,4 +75,14 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .alert-pedidosemaberto {
+    padding: 20px 20px;
+  }
+
+  .alert-pedidosemaberto-text {
+    font-size: 20px;
+  }
+
+}
 

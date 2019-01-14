@@ -9,9 +9,9 @@
 
       <% @enderecos.each do |endereco| %>
 
-        <div class="addresspick-cadaendereco">
+        <div class="addresspick-cadaendereco d-desktop">
 
-          <%= link_to setendereco_path(endereco.id) do %>
+          <%= link_to setendereco_path(endereco.id), class:"adresspick-flex-1" do %>
             <h4 class="addresspick-ruanumerocomp">
               <%= endereco.rua %>, <%= endereco.numero %>, <%= endereco.comp %>
             </h4>
@@ -20,7 +20,21 @@
             </h4>
           <% end %>
 
-          <%= link_to "Excluir endereço", endereco_path(endereco), :method => :delete, class: "addresspick-excluirendereco", data: { confirm: "Tem certeza que deseja este endereço?" }%>
+          <%= link_to "Excluir endereço", endereco_path(endereco), :method => :delete, class: "addresspick-excluirendereco", data: { confirm: "Tem certeza que deseja este endereço?" }, class:"adresspick-flex-2"%>
+        </div>
+
+        <div class="addresspick-cadaendereco-mobile d-mobile">
+
+          <%= link_to setendereco_path(endereco.id), class:"adresspick-flex-1" do %>
+            <h4 class="addresspick-ruanumerocomp">
+              <%= endereco.rua %>, <%= endereco.numero %>, <%= endereco.comp %>
+            </h4>
+            <h4 class="addresspick-estadocidade">
+              <%= endereco.cidade %> - <%= endereco.estado %>
+            </h4>
+          <% end %>
+
+          <%= link_to "Excluir endereço", endereco_path(endereco), :method => :delete, class: "addresspick-excluirendereco", data: { confirm: "Tem certeza que deseja este endereço?" }, class:"adresspick-flex-2"%>
         </div>
 
       <% end %>

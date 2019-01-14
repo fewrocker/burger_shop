@@ -54,3 +54,78 @@
   color: rgba(100,100,100,1);
 }
 
+@media screen and (max-width: 768px) {
+  .selecionarendereco-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+
+  .selecionarendereco-noadress-title {
+    font-size: 15px;
+    color: rgba(100,100,100,1);
+
+    margin-bottom: 50px;
+  }
+
+  .addresspick-cadaendereco-mobile {
+    border: 1px solid rgba(255,200,200,1);
+    padding: 10px 20px;
+
+    margin-bottom: 30px;
+
+    &:hover {
+      background-color: rgba(255,200,200,0.2);
+      cursor: pointer;
+    }
+
+    a:link, a:hover, a:active, a:visited {
+      text-decoration: none;
+    }
+  }
+
+  .addresspick-flex-1 {
+    flex: 0 0 60%;
+  }
+  .addresspick-flex-2 {
+    flex: 0 0 40%;
+  }
+
+  .addresspick-excluirendereco {
+    color: rgba(255,100,100,1);
+
+    &:hover {
+      color: rgba(50,50,50,1);
+      text-decoration: underline;
+    }
+  }
+
+  .addresspick-estadocidade {
+    font-size: 20px;
+    text-decoration: none;
+    color: rgba(50,50,50,1);
+  }
+
+  .addresspick-ruanumerocomp {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgba(100,100,100,1);
+  }
+
+}
+
+// General display on mobile and desktop
+@media screen and (max-width: 768px) {
+  .d-desktop {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .d-mobile {
+    display: none;
+  }
+}
+
+

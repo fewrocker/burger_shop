@@ -1,3 +1,4 @@
+// -------------------
 .banner {
   color: white;
   text-align: center;
@@ -9,6 +10,7 @@
 
   position: relative;
 }
+
 .banner h1 {
   font-size: 80px;
   font-weight: bold;
@@ -22,19 +24,6 @@
   color: white;
   opacity: 1;
   margin-bottom: 80px;
-}
-
-.site-logo-homepage {
-  color: rgba(255,100,100,1);
-  margin-bottom: 20 px;
-
-  background-color:  rgba(250,250,250,1);
-
-  width: 50vw;
-
-  padding: 50px 0;
-
-  margin-bottom: 150px;
 }
 
 #home-horariofuncionamentopopup {
@@ -51,10 +40,6 @@
     position: absolute;
     bottom: 150px;
     right: 270px;
-}
-
-.home-horariofuncionamento-dia {
-
 }
 
 .dia-ativo {
@@ -89,5 +74,31 @@
 
     font-size: 30px;
     font-weight: normal;
+  }
+}
+
+
+// Adaptacoes mobile
+@media screen and (max-width: 768px) {
+  .banner {
+    padding: 20px;
+    h1 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 20px;
+    }
+
+    .home-infosextras {
+      padding: 20px 10px;
+
+      p {
+        color: black;
+        margin-bottom: 0;
+
+        font-size: 15px;
+        font-weight: normal;
+      }
+    }
   }
 }

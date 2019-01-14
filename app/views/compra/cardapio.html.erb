@@ -62,10 +62,10 @@
         <% bebida_counter = 0 %>
         <% @bebidas_soft.each do |bebida| %>
           <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="burger-card">
-              <div class="burger-card-picture" style="background-image: url( <%= bebida.picture_url %> );">
+            <div class="bebida-card">
+              <div class="bebida-card-picture" style="background-image: url( <%= bebida.picture_url %> );">
               </div>
-              <div class="burger-card-description">
+              <div class="bebida-card-description">
                 <div class="bebida-card-nome">
                   <%= bebida.nome %>
                 </div>
@@ -87,7 +87,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Adicionar ao carrinho: <%= bebida.nome %></h5>
+                    <h4 class="modal-title" id="exampleModalLabel">Adicionar ao carrinho: <%= bebida.nome %></h4>
                   </div>
                   <div class="modal-body">
                     <div class="bebida-modal-flex">
@@ -200,7 +200,7 @@
           <div class="carrinho-item-bebida">
             <div class="carrinho-bebida-header">
               <h2 class="carrinho-bebida-nome">
-                <%= bebida.bebida %> x <%= bebida.quantidade %>
+                <%= bebida.bebida %> <br>x <%= bebida.quantidade %>
               </h2>
               <h2 class="carrinho-bebida-preco-cont">
                 <% if bebida.preco.to_s.split('.')[1].length == 2 %>
@@ -229,6 +229,4 @@
     </div>
 
   </div>
-
-
 </div>
