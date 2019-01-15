@@ -7,9 +7,8 @@ function l(x) {
 
 expandBtn = document.getElementsByClassName('carrinho-expand-btn')[0]
 expandContentCarrinho = document.getElementsByClassName('container-carrinho')[0]
-posLastCard = document.getElementsByClassName('bebida-card')
-posLastCard = posLastCard[posLastCard.length - 1].getBoundingClientRect().bottom;
-posTopCart = expandContentCarrinho.getBoundingClientRect().top;
+// Start hidden
+expandContentCarrinho.style.display = "none"
 
 // ------------------------------------------------------------------------------
 // On desktop, make the cart at least the same size as the menu
