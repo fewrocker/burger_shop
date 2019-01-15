@@ -6,7 +6,7 @@
       BurgerShop
     </h2>
 
-    <h2>Conectar-se</h2>
+    <h2>Log In</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs devise-form">
@@ -23,7 +23,7 @@
       <br>
 
       <div class="form-actions text-center">
-        <%= f.button :submit, "Conectar" %>
+        <%= f.button :submit, "Log In" %>
       </div>
     <% end %>
 
@@ -32,9 +32,3 @@
   </div>
 </div>
 
-    <script>
-      // <!-- Traducoes dos campos -->
-      document.getElementsByTagName('label')[0].innerHTML = 'E-mail'
-      document.getElementsByTagName('label')[1].innerHTML = 'Senha'
-      document.getElementsByTagName('label')[2].innerHTML = 'Lembrar de mim'
-    </script>

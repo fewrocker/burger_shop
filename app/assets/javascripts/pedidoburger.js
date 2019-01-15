@@ -47,7 +47,7 @@ precosIngredientes = document.getElementsByClassName('ingrediente-preco')
 continuarBotao = document.getElementById('comprar-burger-btn')
 
 //Atualizar preco botao
-continuarBotao.value = 'Fazer pedido ($' + formatter.format(getValue(precoBase)).toString() + ')'
+continuarBotao.value = 'Add to order ($' + formatter.format(getValue(precoBase)).toString() + ')'
 
 precoBaseValor = getValue(precoBase)
 precoInput.value = formatter.format(precoBaseValor).toString()

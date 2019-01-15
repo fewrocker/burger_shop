@@ -2,7 +2,7 @@
   <div class="container-checkout">
 
     <h2 class="selecionarendereco-title">
-      Meus endereços
+      My addresses
     </h2>
 
     <% if @temendereco %>
@@ -20,13 +20,13 @@
             </span>
           </h4>
 
-          <%= link_to "Excluir endereço", endereco_path(endereco), :method => :delete, class: "addresspick-excluirendereco", data: { confirm: "Tem certeza que deseja este endereço?" }%>
+          <%= link_to "Delete", endereco_path(endereco), :method => :delete, class: "addresspick-excluirendereco", data: { confirm: "Tem certeza que deseja este endereço?" }%>
         </div>
 
       <% end %>
 
       <%= link_to new_endereco_path do %>
-        <button class="btn btn-danger">Cadastrar endereço</button>
+        <button class="btn btn-danger">New address</button>
       <% end %>
 
     <% else %>
@@ -36,7 +36,7 @@
       </h4>
 
       <%= link_to new_endereco_path do %>
-        <button class="btn btn-danger">Cadastrar endereço</button>
+        <button class="btn btn-danger">New address</button>
       <% end %>
 
     <% end %>

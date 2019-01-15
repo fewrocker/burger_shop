@@ -7,7 +7,7 @@
       BurgerShop
     </h2>
 
-    <h2>Criar uma conta</h2>
+    <h2>Create new account</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -19,7 +19,7 @@
                     input_html: { autocomplete: "email" }%>
         <%= f.input :password,
                     required: true,
-                    placeholder: "No mínimo #{@minimum_password_length} caracteres",
+                    placeholder: "At least #{@minimum_password_length} digits",
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
                     required: true,
@@ -27,7 +27,7 @@
       </div>
 <br>
       <div class="form-actions">
-        <%= f.button :submit, "Concluir" %>
+        <%= f.button :submit, "Create account" %>
       </div>
     <% end %>
 
@@ -35,10 +35,3 @@
 
   </div>
 </div>
-
-<script>
-  // <!-- Traducoes dos campos -->
-  document.getElementsByTagName('label')[0].innerHTML = 'E-mail'
-  document.getElementsByTagName('label')[1].innerHTML = 'Senha'
-  document.getElementsByTagName('label')[2].innerHTML = 'Confirmação da senha'
-</script>

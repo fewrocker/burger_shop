@@ -25,7 +25,7 @@ class PagesController < ApplicationController
     # Domingo: 08h as 24h
     @open_hours[0] = [8,24]
 
-    @weekday_name = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado']
+    @weekday_name = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday']
 
     datetime = Time.now
 
@@ -38,9 +38,9 @@ class PagesController < ApplicationController
 
     # Status é aberto quando atende as condições, fechado nas outras
     # A condição é checar se o horario de agora está entre os dois horários indicados para aquele dia
-    @status = 'Fechado'
+    @status = 'Closed'
     if @hora_now > @open_hours[@weekday_now][0] && @hora_now < @open_hours[@weekday_now][1]
-      @status = 'Aberto'
+      @status = 'Open'
     end
 
   end

@@ -3,7 +3,7 @@
   <div class="container-checkout">
 
     <h2 class="novoendereco-title">
-      Novo endereço
+      New address
     </h2>
 
     <form action="/endereco" method="post">
@@ -13,7 +13,7 @@
         <div class="col-xs-12 col-lg-4">
           <!-- Estado -->
           <div class="control-group">
-            <label class="control-label">Estado</label>
+            <label class="control-label">State</label>
             <div class="controls">
               <select id="addressestado" name="addressestado" class="input-xlarge">
                 <option value="" selected="selected">(Selecione um estado)</option>
@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-lg-5">
           <!-- Cidade-->
           <div class="control-group">
-              <label class="control-label">Cidade</label>
+              <label class="control-label">City</label>
               <div class="controls">
                   <input id="addresscidade" name="addresscidade" type="text"
                   class="input-xlarge">
@@ -64,7 +64,7 @@
         <div class="col-xs-12 col-lg-5">
           <!-- Rua-->
           <div class="control-group">
-              <label class="control-label">Rua</label>
+              <label class="control-label">Street</label>
               <div class="controls">
                 <input id="addressrua" name="addressrua" type="text"
                   class="input-xlarge">
@@ -74,7 +74,7 @@
         <div class="col-xs-6 col-lg-2">
           <!-- Numero-->
           <div class="control-group">
-              <label class="control-label">Número</label>
+              <label class="control-label">Number</label>
               <div class="controls">
                   <input id="addressnumero" name="addressnumero" type="text"
                   class="input-xlarge">
@@ -84,7 +84,7 @@
         <div class="col-xs-6 col-lg-2">
           <!-- Complemento-->
           <div class="control-group">
-              <label class="control-label">Complemento</label>
+              <label class="control-label">Complement</label>
               <div class="controls">
                   <input id="addresscomplemento" name="addresscomplemento" type="text"
                   class="input-xlarge">
@@ -97,7 +97,7 @@
         <div class="col-xs-12 col-lg-9">
           <!-- Referencia-->
           <div class="control-group">
-              <label class="control-label">Referência</label>
+              <label class="control-label">References</label>
               <div class="controls">
                   <input id="addressreferencia" name="addressreferencia" type="text"
                   class="input-xlarge">
@@ -108,14 +108,14 @@
 
       <div class="novoendereco-opcoes">
 
-        <input type="submit" value="Cadastrar endereço" class="btn btn-danger cadastrarendereco-btn">
+        <input type="submit" value="Save address" class="btn btn-danger cadastrarendereco-btn">
 
       </div>
 
     </form>
 
     <%= link_to addresspick_path, class: "novoendereco-voltar" do %>
-      <button class="btn btn-secondary">Voltar</button>
+      <button class="btn btn-secondary">Back</button>
     <% end %>
 
   </div>

@@ -1,12 +1,12 @@
   <div class="wrapper-checkout">
   <div class="container-checkout">
 
-    <h2 class="checkout-page-title">Resumo do pedido</h2>
+    <h2 class="checkout-page-title">Your order</h2>
 
     <h2 class="carrinho-subtitle text-center">
       &nbsp;
       <img src="https://static.thenounproject.com/png/153732-200.png" alt="" style="width: 50px;">
-      Lanches
+      Burgers
     </h2>
 
     <div class="carrinho-conteudo-checkout" style="">
@@ -41,7 +41,7 @@
               <%= link_to pedidoburger_path + "/#{burger.id}?redir=checkout",
                 method: :delete,
                 data: { confirm: "Tem certeza que deseja exluir #{burger.burger}?"} do %>
-                  <span class="checkout-excluirlanche">Excluir lanche</span>
+                  <span class="checkout-excluirlanche">Remove</span>
               <% end %>
             </h4>
           </li>
@@ -53,7 +53,7 @@
     <h2 class="carrinho-subtitle text-center">
       &nbsp;&nbsp;
       <img src="https://static.thenounproject.com/png/583455-200.png" alt="" style="width: 50px;">
-      Bebidas
+      Drinks
     </h2>
 
     <div class="carrinho-conteudo-checkout carrinho-conteudo-checkout-bebidas" style="">
@@ -75,7 +75,7 @@
               <%= link_to pedidobebida_path + "/#{bebida.id}?redir=checkout",
                 method: :delete,
                 data: { confirm: "Tem certeza que deseja exluir #{bebida.bebida}?"} do %>
-                  <span class="checkout-excluirlanche">Excluir bebida</span>
+                  <span class="checkout-excluirlanche">Remove</span>
               <% end %>
             </h4>
           </li>
@@ -85,7 +85,7 @@
 
     <div class="checkout-total-cost">
       <h4 class="checkout-total-text">
-        <strong>Total do pedido:</strong> $
+        <strong>Order total:</strong> $
           <% if @carrinho_total.to_s.split('.')[1].length == 2 %>
             <%= @carrinho_total %>
           <% else %>
@@ -94,18 +94,18 @@
       </h4>
 
       <h4 class="checkout-endereco-entrega">
-        <strong>Endereço de entrega:</strong>
+        <strong>Delivery address:</strong>
         <%= @endereco.rua %>, <%= @endereco.numero %>, <%= @endereco.comp %> - <%= @endereco.estado %>, <%= @endereco.cidade %>
-        <%= link_to '(Alterar)', addresspick_path, class: 'alterar-endereco' %>
+        <%= link_to '(Change)', addresspick_path, class: 'alterar-endereco' %>
       </h4>
     </div>
 
     <div class="checkout-options text-center">
       <%= link_to pedido_path(@carrinho, order: "concluir", precototal: "#{@carrinho_total}"), class: "checkout-btn", method: :patch do %>
-        <button class="btn btn-proceedcheckout"> Concluir pedido </button>
+        <button class="btn btn-proceedcheckout"> Place order </button>
       <% end %>
       <%= link_to cardapio_path, class: "checkout-btn" do %>
-        <button class="btn btn-returntostore"> Incluir mais itens </button>
+        <button class="btn btn-returntostore"> Back to shop </button>
       <% end %>
     </div>
 

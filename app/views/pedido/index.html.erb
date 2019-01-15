@@ -4,11 +4,11 @@
   <div class="container-checkout">
 
     <h3 class="pedido-index-user-title">
-      Pedidos em aberto
+      Active orders
     </h3>
 
     <% if @pedidos_em_andamento.length == 0 %>
-      Não existem pedidos em andamento
+      There are no active orders
     <% end %>
 
     <% pedido_count = 0 %>
@@ -16,25 +16,26 @@
     <% @pedidos_em_andamento.each do |pedido| %>
       <div class="pedido-index-user-cadapedido-header <%= "pedido-header#{pedido_count}" %> pedido-header-andamento">
         <h3 class="pedido-index-user-pedido-id">
-          Pedido #<%= "#{pedido.id}" %>
+          Order #<%= "#{pedido.id}" %>
         </h3>
         <h3 class="pedido-index-user-pedido-status" style="text-transform: capitalize;">
-          <strong>Status</strong> <br>
-          <%= "#{pedido.status}" %>
+          <strong>Situation</strong> <br>
+          <%= "Preparation" if pedido.status == 'em preparo' %>
+          <%= "Out for delivery" if pedido.status == 'saiu para entrega' %>
         </h3>
         <h3 class="pedido-index-user-pedido-horario">
-          <strong>Horário pedido</strong> <br>
+          <strong>Ordered at</strong> <br>
           <%= "#{pedido.horario.localtime.strftime("%k:%M")}" %>
         </h3>
         <h3 class="pedido-index-user-pedido-tempoestimado">
-          <strong>Estimativa de entrega</strong> <br>
-          <%= "#{((pedido.horario + 60*30 - Time.now)/60).round(0)} minutos" %>
+          <strong>Delivery estimate</strong> <br>
+          <%= "#{((pedido.horario + 60*30 - Time.now)/60).round(0)} minutes" %>
         </h3>
       </div>
       <div class="pedido-index-user-cadapedido-body <%= "pedido-body#{pedido_count}" %>" style="display: none;">
 
         <h5 class="pedido-index-user-cadapedido-body-informacao">
-          <strong>Total do pedido</strong>
+          <strong>Order total:Total do pedido</strong>
           $<% if pedido.precototal.to_s.split('.')[1].length == 2 %>
             <%= pedido.precototal %>
           <% else %>
@@ -43,13 +44,13 @@
         </h5>
 
         <h5 class="pedido-index-user-cadapedido-body-informacao">
-          <strong>Endereço de entrega:</strong>
+          <strong>Delivery address:</strong>
           <% endereco = Endereco.find(pedido.enderecoid) %>
           <%= endereco.rua %>, <%= endereco.numero %>, <%= endereco.comp %> - <%= endereco.estado %>, <%= endereco.cidade %>
         </h5>
 
         <h5 class="pedido-index-user-cadapedido-body-informacao">
-          <strong>Itens:</strong>
+          <strong>Items:</strong>
         </h5>
 
         <ul class="pedido-index-user-cadapedido-body-lista">
@@ -70,31 +71,31 @@
 
 
     <h3 class="pedido-index-user-title">
-      Pedidos concluidos
+      Past orders
     </h3>
 
     <% if @pedidos_concluidos.length == 0 %>
-      Não existem pedidos concluídos
+      There are no past orders
     <% end %>
 
     <% @pedidos_concluidos.each do |pedido| %>
       <div class="pedido-index-user-cadapedido-header <%= "pedido-header#{pedido_count}" %> pedido-header-concluido">
         <h3 class="pedido-index-user-pedido-id">
-          Pedido #<%= "#{pedido.id}" %>
+          Order #<%= "#{pedido.id}" %>
         </h3>
         <h3 class="pedido-index-user-pedido-status" style="text-transform: capitalize;">
           <strong>Status</strong> <br>
           <%= "#{pedido.status}" %>
         </h3>
         <h3 class="pedido-index-user-pedido-horario">
-          <strong>Data e hora do pedido</strong> <br>
+          <strong>Date and time</strong> <br>
           <%= "#{pedido.horario.localtime.strftime("%d/%m/%y")}" %>, <%= "#{pedido.horario.localtime.strftime("%k:%M")}" %>
         </h3>
       </div>
       <div class="pedido-index-user-cadapedido-body <%= "pedido-body#{pedido_count}" %>" style="display: none;">
 
         <h5 class="pedido-index-user-cadapedido-body-informacao">
-          <strong>Total do pedido</strong>
+          <strong>Order total:</strong>
           $<% if pedido.precototal.to_s.split('.')[1].length == 2 %>
             <%= pedido.precototal %>
           <% else %>
@@ -103,13 +104,13 @@
         </h5>
 
         <h5 class="pedido-index-user-cadapedido-body-informacao">
-          <strong>Endereço de entrega:</strong>
+          <strong>Delivery address:</strong>
           <% endereco = Endereco.find(pedido.enderecoid) %>
           <%= endereco.rua %>, <%= endereco.numero %>, <%= endereco.comp %> - <%= endereco.estado %>, <%= endereco.cidade %>
         </h5>
 
         <h5 class="pedido-index-user-cadapedido-body-informacao">
-          <strong>Itens:</strong>
+          <strong>Itens:<mstrong>
         </h5>
 
         <ul class="pedido-index-user-cadapedido-body-lista">
@@ -142,3 +143,4 @@
 
 
 <% end %>
+

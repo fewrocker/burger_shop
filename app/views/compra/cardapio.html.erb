@@ -1,8 +1,8 @@
 <% if @pedidos_em_aberto %>
   <div class="alert-pedidosemaberto text-center">
     <h4 class="alert-pedidosemaberto-text">
-      Você possui pedidos em andamento
-      <%= link_to "(Ver pedidos)", pedido_index_path %>
+      You have active orders
+      <%= link_to "(See details)", pedido_index_path %>
     </h4>
   </div>
 <% end %>
@@ -11,7 +11,7 @@
   <div class="container-cardapio">
     <div class="container-cardapio-lanches">
       <h1 class="cardapio-title-1">
-        Lanches
+        Burgers
       </h1>
 
       <div class="row">
@@ -26,7 +26,7 @@
                     <%= lanche.nome %>
                   </div>
                   <div class="burger-card-ingredientes">
-                    <% if lanche.nome != 'x-tudo-real' %>
+                    <% if lanche.nome != 'Every-fucking-thing' %>
                       <% lanche.ingredientes_base.each do |ingrediente| %>
                         <% if ingrediente != lanche.ingredientes_base.last %>
                           <%= ingrediente %>,
@@ -35,7 +35,7 @@
                         <% end %>
                       <% end %>
                     <% else %>
-                      Literalmente tudo
+                      Literally everything we have stuck inside your burger
                     <% end %>
                   </div>
                   <div class="burger-card-preco">
@@ -55,7 +55,7 @@
 
     <div class="container-cardapio-bebidas">
       <h1 class="cardapio-title-1">
-        Bebidas
+        Drinks
       </h1>
 
       <div class="row">
@@ -78,7 +78,7 @@
                 </div>
                 <h4 class="bebida-card-preco-hidden" style="display: none;"> <%= bebida.preco_base %></h4>
                 <button type="button" class="btn btn-primary adicionar-bebida-btn" data-toggle="modal" data-target="<%= "#bebida-modal-#{bebida_counter}" %>">
-                  Adicionar
+                  Add
                 </button>
               </div>
             </div>
@@ -87,14 +87,14 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Adicionar ao carrinho: <%= bebida.nome %></h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Add to cart: <%= bebida.nome %></h4>
                   </div>
                   <div class="modal-body">
                     <div class="bebida-modal-flex">
                       <div class="bebida-modal-picture" style="background-image: url( <%= bebida.picture_url %> );">
                       </div>
                       <div class="bebida-modal-quantidade">
-                        <h4>Quantidade:</h4>
+                        <h4>Amount:</h4>
                         <div class="bebida-modal-quantidade-controller">
                           <i class="fas fa-minus-circle bebida-modal-quantidade-controller-minus"></i>
                           <div class="bebida-modal-quantidade-controller-input">1</div>
@@ -106,13 +106,13 @@
                   </div>
                   <div class="modal-footer">
                     <ul class="list-inline">
-                      <li><button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button></li>
+                      <li><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></li>
                       <li>
                       <form action="/pedidobebida" method="post">
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                         <%= hidden_field_tag :bebida, bebida.nome %>
                         <input type="integer" value = 1 name="bebidaquantidade" class="bebida-quantidade-input" style="display: none;">
-                        <input type="submit" id="comprar-burger-btn" class="btn btn-primary bebida-adicionar-btn" value="Adicionar">
+                        <input type="submit" id="comprar-burger-btn" class="btn btn-primary bebida-adicionar-btn" value="Add">
                       </form>
                       </li>
                     </ul>
@@ -131,7 +131,7 @@
 
     <div class="container-carrinho-header">
       <h1 class="carrinho-title">
-        &nbsp;&nbsp;Seu pedido
+        &nbsp;&nbsp;Your order
       </h1>
       <div class="carrinho-total">
         <% if @carrinho_total != 0 %>
@@ -150,7 +150,7 @@
     <h2 class="carrinho-subtitle">
       &nbsp;
       <img src="https://static.thenounproject.com/png/153732-200.png" alt="" style="width: 50px;">
-      Lanches
+      Burgers
     </h2>
 
     <div class="row carrinho-conteudo" style="">
@@ -192,7 +192,7 @@
       <h2 class="carrinho-subtitle">
         &nbsp;&nbsp;
         <img src="https://static.thenounproject.com/png/583455-200.png" alt="" style="width: 50px;">
-        Bebidas
+        Drinks
       </h2>
 
       <div class="col-xs-12">
@@ -224,7 +224,7 @@
 
     <div class="concluir-compra-btn-box text-center">
       <%= link_to "/addresspick?possuiendereco=#{@carrinho.enderecoid.nil?}" do %>
-        <button class="btn btn-success concluir-pedido-btn"> Concluir pedido </button>
+        <button class="btn btn-success concluir-pedido-btn"> Checkout </button>
       <% end %>
     </div>
 

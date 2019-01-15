@@ -1,7 +1,7 @@
 <div class="wrapper-pedidoburger">
   <div class="container-pedidoburger">
 
-    <h1 class="pedidoburger-title">Personalize seu lanche</h1>
+    <h1 class="pedidoburger-title">Customize your burger</h1>
 
     <div class="burger-card">
       <div class="burger-card-picture" style="background-image: url('https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg');">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="lista-ingredientes">
-      <h1 class="pedidoburger-ingrediente-categoria-title">Carnes</h1>
+      <h1 class="pedidoburger-ingrediente-categoria-title">Meat</h1>
       <% @ingredientes_carne.each do |ing| %>
         <div class="cada-ingrediente ingrediente-carne">
           <h2 class="ingrediente-nome">
@@ -92,7 +92,7 @@
         </div>
       <% end %>
 
-      <h1 class="pedidoburger-ingrediente-categoria-title">Queijos</h1>
+      <h1 class="pedidoburger-ingrediente-categoria-title">Cheese</h1>
       <% @ingredientes_queijo.each do |ing| %>
         <div class="cada-ingrediente ingrediente-carne">
           <h2 class="ingrediente-nome">
@@ -149,7 +149,7 @@
         </div>
       <% end %>
 
-      <h1 class="pedidoburger-ingrediente-categoria-title">Acompanhamentos</h1>
+      <h1 class="pedidoburger-ingrediente-categoria-title">Extras</h1>
       <% @ingredientes_acompanhamentos.each do |ing| %>
         <div class="cada-ingrediente ingrediente-carne">
           <h2 class="ingrediente-nome">
@@ -206,7 +206,7 @@
         </div>
       <% end %>
 
-      <h1 class="pedidoburger-ingrediente-categoria-title">Salada</h1>
+      <h1 class="pedidoburger-ingrediente-categoria-title">Salad</h1>
       <% @ingredientes_salada.each do |ing| %>
         <div class="cada-ingrediente ingrediente-carne">
           <h2 class="ingrediente-nome">
@@ -263,7 +263,7 @@
         </div>
       <% end %>
 
-      <h1 class="pedidoburger-ingrediente-categoria-title">Molhos</h1>
+      <h1 class="pedidoburger-ingrediente-categoria-title">Sauces</h1>
       <% @ingredientes_molho.each do |ing| %>
         <div class="cada-ingrediente ingrediente-carne">
           <h2 class="ingrediente-nome">
@@ -333,7 +333,7 @@
           <input type="text" name="ingrediente_nome_<%= count %>" class="ingrediente-nome-input" style="display: none;">
         <% end %>
         <input type="text" name="preco" class="preco-input" style="display: none;">
-        <input type="submit" id="comprar-burger-btn" class="btn btn-primary burger-proceed-btn" value="Fazer pedido">
+        <input type="submit" id="comprar-burger-btn" class="btn btn-primary burger-proceed-btn" value="Add to order">
       </form>
     </div>
   </div>
