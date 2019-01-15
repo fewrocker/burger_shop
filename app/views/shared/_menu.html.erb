@@ -1,0 +1,117 @@
+<div class="container-cardapio">
+  <div class="container-cardapio-lanches">
+    <h1 class="cardapio-title-1">
+      Burgers
+    </h1>
+
+    <div class="row">
+      <% @lanches.each do |lanche| %>
+        <%= link_to(pedidoburger_path + "?burger=#{lanche.nome}", class: "burger-card-link") do %>
+          <div class="col-xs-12 col-md-6">
+            <div class="burger-card">
+              <div class="burger-card-picture" style="background-image: url( <%= lanche.picture_url %> );">
+              </div>
+              <div class="burger-card-description">
+                <div class="burger-card-nome">
+                  <%= lanche.nome %>
+                </div>
+                <div class="burger-card-ingredientes">
+                  <% if lanche.nome != 'Every-fucking-thing' %>
+                    <% lanche.ingredientes_base.each do |ingrediente| %>
+                      <% if ingrediente != lanche.ingredientes_base.last %>
+                        <%= ingrediente %>,
+                      <% else %>
+                        <%= ingrediente %>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    Literally everything we have stuck inside your burger
+                  <% end %>
+                </div>
+                <div class="burger-card-preco">
+                  <% if lanche.preco_base.to_s.split('.')[1].length == 2 %>
+                    $<%= lanche.preco_base %>
+                  <% else %>
+                    $<%= lanche.preco_base %>0
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container-cardapio-bebidas">
+    <h1 class="cardapio-title-1">
+      Drinks
+    </h1>
+
+    <div class="row">
+      <% bebida_counter = 0 %>
+      <% @bebidas_soft.each do |bebida| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 bebida-card-link-parent">
+          <%= link_to "#", data: {toggle: "modal", target: "#bebida-modal-#{bebida_counter}"} do %>
+            <div class="bebida-card">
+              <div class="bebida-card-picture" style="background-image: url( <%= bebida.picture_url %> );">
+              </div>
+              <div class="bebida-card-description">
+                <div class="bebida-card-nome">
+                  <%= bebida.nome %>
+                </div>
+                <div class="bebida-card-preco">
+                  <% if bebida.preco_base.to_s.split('.')[1].length == 2 %>
+                    $<%= bebida.preco_base %>
+                  <% else %>
+                    $<%= bebida.preco_base %>0
+                  <% end %>
+                </div>
+                <h4 class="bebida-card-preco-hidden" style="display: none;"> <%= bebida.preco_base %></h4>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="modal fade" id="<%= "bebida-modal-#{bebida_counter}" %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLabel">Add to cart: <%= bebida.nome %></h4>
+                </div>
+                <div class="modal-body">
+                  <div class="bebida-modal-flex">
+                    <div class="bebida-modal-picture" style="background-image: url( <%= bebida.picture_url %> );">
+                    </div>
+                    <div class="bebida-modal-quantidade">
+                      <h4>Amount:</h4>
+                      <div class="bebida-modal-quantidade-controller">
+                        <i class="fas fa-minus-circle bebida-modal-quantidade-controller-minus"></i>
+                        <div class="bebida-modal-quantidade-controller-input">1</div>
+                        <i class="fas fa-plus-circle bebida-modal-quantidade-controller-plus"></i>
+                      </div>
+                      <h4>Total: <span class="bebida-modal-valor-total"></span></h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <ul class="list-inline">
+                    <li><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></li>
+                    <li>
+                    <form action="/pedidobebida" method="post">
+                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                      <%= hidden_field_tag :bebida, bebida.nome %>
+                      <input type="integer" value = 1 name="bebidaquantidade" class="bebida-quantidade-input" style="display: none;">
+                      <input type="submit" id="comprar-burger-btn" class="btn btn-primary bebida-adicionar-btn" value="Add">
+                    </form>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% bebida_counter += 1 %>
+      <% end %>
+    </div>
+  </div>
+</div>

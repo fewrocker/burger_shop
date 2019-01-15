@@ -83,12 +83,7 @@
         <h3 class="pedido-index-user-pedido-id">
           Order #<%= "#{pedido.id}" %>
         </h3>
-        <h3 class="pedido-index-user-pedido-status" style="text-transform: capitalize;">
-          <strong>Status</strong> <br>
-          <%= "#{pedido.status}" %>
-        </h3>
         <h3 class="pedido-index-user-pedido-horario">
-          <strong>Date and time</strong> <br>
           <%= "#{pedido.horario.localtime.strftime("%d/%m/%y")}" %>, <%= "#{pedido.horario.localtime.strftime("%k:%M")}" %>
         </h3>
       </div>

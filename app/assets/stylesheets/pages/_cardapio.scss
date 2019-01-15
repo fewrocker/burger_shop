@@ -1,21 +1,41 @@
-@media screen and (min-width: 1600px) {
+.row {
+  width: 100%;
+  margin: 0;
+}
+
+.cardapio-title-1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+}
+
+.wrapper-cardapio {
+  background-color: lightblue;
+}
+
+.container-carrinho {
+  background-color: rgba(200,200,200,1);
+  padding: 15px 30px;
+}
+
+@media screen and (min-width: 1400px) {
   .wrapper-cardapio {
-    background-color: lightblue;
-    padding: 40px 50px;
+    padding: 20px 50px;
 
     display: flex;
     justify-content: space-between;
   }
 
-  .container-carrinho {
+  .carrinho-whole {
     flex: 0 0 28%;
 
-    margin-left: 25px;
+    margin-top: 58px;
+  }
 
-    background-color: rgba(200,200,200,1);
-    border: 1px solid black;
+  .container-carrinho {
+    padding: 30px 20px;
 
-    padding: 0 0px;
+    border-top: 6px solid white;
 
     height: auto;
   }
@@ -25,21 +45,17 @@
   }
 
   .container-cardapio-lanches {
-    background-color: rgba(240,240,240,1);
-    padding: 10px 50px;
-    border: 1px solid rgba(150,150,150,1);
-    box-shadow: 1px 1px rgba(220,220,220,1);
+    background-color: transparent;
+    padding: 0px 50px;
 
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
 
   .container-cardapio-bebidas {
-    background-color: rgba(240,240,240,1);
-    padding: 10px 50px;
-    border: 1px solid rgba(150,150,150,1);
-    box-shadow: 1px 1px rgba(220,220,220,1);
+    background-color: transparent;
+    padding: 0px 50px;
 
-    margin-bottom: 50px;
+    margin-bottom: 10px;
   }
 
   .cardapio-title-1 {
@@ -50,9 +66,14 @@
 
 @media screen and (max-width: 768px) {
   .cardapio-title-1 {
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     padding-left: 20px;
+    margin: 20px 0;
+  }
+
+  .container-cardapio {
+    padding-top: 20px;
   }
 }
 
