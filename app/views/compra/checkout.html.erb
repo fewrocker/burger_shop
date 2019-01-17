@@ -86,11 +86,15 @@
     <div class="checkout-total-cost">
       <h4 class="checkout-total-text">
         <strong>Order total:</strong> $
+        <% if (@carrinho_total == 0) %>
+          0.00
+        <% else %>
           <% if @carrinho_total.to_s.split('.')[1].length == 2 %>
             <%= @carrinho_total %>
           <% else %>
             <%= @carrinho_total %>0
           <% end %>
+        <% end %>
       </h4>
 
       <h4 class="checkout-endereco-entrega">
