@@ -16,7 +16,6 @@ function index(el) {
     return -1;
 }
 
-
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'decimal',
   minimumFractionDigits: 2,
@@ -27,7 +26,7 @@ var adicionarMinusBtn = document.getElementsByClassName('bebida-modal-quantidade
 var adicionarPlusBtn = document.getElementsByClassName('bebida-modal-quantidade-controller-plus')
 var adicionarBebidaCount = document.getElementsByClassName('bebida-modal-quantidade-controller-input')
 var adicionarBebidaCountInput = document.getElementsByClassName('bebida-quantidade-input')
-var adicionarBebidaBtn = document.getElementsByClassName('adicionar-bebida-btn')
+var adicionarBebidaBtn = document.getElementsByClassName('bebida-link')
 var adicionarBebidaPrecoTotal = document.getElementsByClassName('bebida-modal-valor-total')
 
 var bebidaPrecos = document.getElementsByClassName('bebida-card-preco-hidden')
@@ -44,7 +43,7 @@ var precoUnitario  = 0
 Array.prototype.forEach.call(adicionarBebidaBtn, adicionar => {
   adicionar.addEventListener('click', function() {
 
-    bebidaIndex = (index(adicionar.parentNode.parentNode.parentNode)-1)/2
+    bebidaIndex = parseInt(adicionar.classList[1].match(/\d+/g)[0],10)
     precoUnitario = parseFloat(bebidaPrecos[bebidaIndex].innerHTML)
 
     Array.prototype.forEach.call(adicionarBebidaPrecoTotal, input => {

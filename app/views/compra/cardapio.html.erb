@@ -9,12 +9,15 @@
 
 <div class="wrapper-cardapio">
   <div class="container-cardapio">
+
+    <%= image_tag 'menutitle.png', class:"menu-title" %>
+
     <div class="container-cardapio-lanches">
-      <h1 class="cardapio-title-1">
+      <h1 class="cardapio-title-1 cardapio-title-burger">
         Burgers
       </h1>
 
-      <div class="row">
+      <div class="row container-burgers-content">
         <% @lanches.each do |lanche| %>
           <%= link_to(pedidoburger_path + "?burger=#{lanche.nome}", class: "burger-card-link") do %>
             <div class="col-xs-12 col-md-6">
@@ -54,15 +57,15 @@
     </div>
 
     <div class="container-cardapio-bebidas">
-      <h1 class="cardapio-title-1">
+      <h1 class="cardapio-title-1 cardapio-title-drinks">
         Drinks
       </h1>
 
-      <div class="row">
+      <div class="row container-drinks-content">
         <% bebida_counter = 0 %>
         <% @bebidas_soft.each do |bebida| %>
           <div class="col-xs-12 col-sm-6 col-md-4 bebida-card-link-parent">
-            <%= link_to "#", data: {toggle: "modal", target: "#bebida-modal-#{bebida_counter}"} do %>
+            <%= link_to "#", data: {toggle: "modal", target: "#bebida-modal-#{bebida_counter}"}, class:"bebida-link bebida-link-#{bebida_counter}" do %>
               <div class="bebida-card">
                 <div class="bebida-card-picture" style="background-image: url( <%= bebida.picture_url %> );">
                 </div>

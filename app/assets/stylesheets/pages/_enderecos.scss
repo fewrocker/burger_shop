@@ -15,6 +15,7 @@
 .addresspick-cadaendereco {
   border: 1px solid rgba(255,200,200,1);
   padding: 10px 100px 10px 20px;
+  @media screen and (max-width: 768px) {padding: 10px 20px 10px 20px}
 
   display: flex;
   align-items: center;
@@ -43,6 +44,7 @@
 
 .addresspick-estadocidade {
   font-size: 20px;
+  font-weight: normal;
   text-decoration: none;
   color: rgba(50,50,50,1);
 }

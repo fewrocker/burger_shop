@@ -18,6 +18,10 @@
   flex: 0 0 50%;
 }
 
+.carrinho-whole {
+  // padding: 0 20px;
+}
+
 .carrinho-total {
   flex: 0 0 50%;
 }
@@ -35,6 +39,17 @@
   font-size: 30px;
 
   color: rgba(70,70,70,1);
+}
+
+.menu-title {
+  width: 500px;
+  padding-left: 50px;
+
+  @media screen and (max-width: 768px) {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .carrinho-item-burger {

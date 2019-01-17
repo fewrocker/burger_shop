@@ -12,7 +12,6 @@
 
   a:link, a:hover, a:visited, a:active {
     text-decoration: none;
-    color: black;
   }
 }
 
@@ -75,17 +74,28 @@
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  padding: 20px 20px;
+  color: white;
 }
 
-/* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
-}
-.navbar-wagon-link:hover {
-  color: #da552f;
-  text-decoration: none;
+  cursor: pointer;
+
+  color: white;
+  font-size: 16px;
+  margin: 0 5px;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+    background-color: white;
+    color: $vermelho-medio;
+    transition: 0.3s ease;
+  }
+
+  i {
+    font-size: 30px;
+  }
 }
 
 /* Dropdown menu */
