@@ -10,12 +10,28 @@ class CompraController < ApplicationController
       p.save
     end
 
+    # Atualizar status dos pedidos antes de mostrar algo
+    Pedido.all.select {|pedido| pedido.status == 'em preparo' || pedido.status == 'saiu para entrega' }.each do |pedido|
+      timeelapsed = ((Time.now - pedido.horario)/60).round(0)
+
+      if timeelapsed > 15 && timeelapsed <= 30
+        pedido.status = 'saiu para entrega'
+        pedido.save
+      elsif timeelapsed > 30
+        pedido.status = 'concluido'
+        pedido.save
+      end
+    end
+
     # Criar mensagem de pedido em andamento caso haja algum
     if Pedido.all.select { |pedido| pedido.user == current_user && (pedido.status == 'em preparo' || pedido.status == 'saiu para entrega') }.length != 0
       @pedidos_em_aberto = true
     else
       @pedidos_em_aberto = false
     end
+
+    # URL params to open/close cart
+    @active_orders = params[:cart] == 'o'
 
     # Separar os itens do cardapio
     @lanches = Burger.all

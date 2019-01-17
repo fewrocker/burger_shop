@@ -46,7 +46,7 @@ class PedidoburgerController < ApplicationController
     if redir == "checkout"
       redirect_to checkout_path
     else
-      redirect_to cardapio_path
+      redirect_to '/cardapio?cart=o'
     end
   end
 end

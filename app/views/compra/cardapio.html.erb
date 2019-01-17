@@ -1,3 +1,9 @@
+<!-- Url parameters to open/close cart -->
+<% if @active_orders %>
+  <div class="open-cart" style="display:none;"></div>
+<% end %>
+
+<!-- Active orders banner -->
 <% if @pedidos_em_aberto %>
   <div class="alert-pedidosemaberto text-center">
     <h4 class="alert-pedidosemaberto-text">

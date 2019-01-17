@@ -48,8 +48,8 @@ class EnderecoController < ApplicationController
     endereco.destroy
 
     # Retirar enderecoid do pedido caso o usuario exclua o endereco que esta sendo usado para entrega (anti-bug)
-    carrinho = Pedido.all.select { |pedido| pedido.user == current_user && pedido.status == 'em compras' && pedido.enderecoid == enderecoid}
-    carrinho[0].enderecoid = nil if carrinho.length != 0
+    carrinho = Pedido.all.select { |pedido| pedido.user == current_user && pedido.status == 'em compras'}
+    carrinho[0].enderecoid = nil
     carrinho[0].save
 
     redirect_to addresspick_path
