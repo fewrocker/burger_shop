@@ -20,7 +20,7 @@
 }
 
 .ingrediente-nome {
-  font-size: 25px;
+  font-size: 20px;
 
   flex: 0 0 40%;
   text-align: left;
@@ -46,7 +46,6 @@
   background-color: $vermelho-medio;
 }
 
-
 .cada-ingrediente  {
   display: flex;
   text-align: center;
@@ -54,7 +53,7 @@
 
   background-color: rgba(255,255,255,0.8);
   margin-bottom: 10px;
-  padding: 5px 2px 5px 20px;
+  padding: 2px 2px 2px 20px;
 }
 
 .ingrediente-quantidades {
@@ -71,8 +70,8 @@
   flex: 0 0 30%;
 
     p {
-
       font-weight: lighter;
+      margin-bottom: 5px;
     }
 
   &:hover {
@@ -89,6 +88,8 @@
   font-size: 30px;
   font-weight: bold;
   padding-left: 30px;
+  font-weight: 200;
+  border-bottom: 1px solid white;
 }
 
 .burger-card-preco-build {
@@ -124,6 +125,11 @@
 
   .pedidoburger-title {
     font-size: 30px;
+    margin: 20px 0;
+  }
+
+  .cada-ingrediente  {
+    margin-bottom: 5px;
   }
 
   .ingrediente-nome {
@@ -131,7 +137,7 @@
 
     border-right: 2px solid rgba(200,200,200,1);
 
-    padding: 10px 10px 10px 10px;
+    padding: 5px 10px 5px 10px;
 
     margin: 10px 0;
   }
@@ -154,5 +160,24 @@
   .burger-proceed-btn {
     width: 80%;
     margin-bottom: 30px;
+  }
+
+  .burger-card-preco-build {
+    width: 120px;
+  }
+
+  .burger-card-preco-build-base {
+    font-size: 25px;
+  }
+
+  .burger-card-preco-build-extra {
+    font-size: 20px;
+  }
+
+  .pedidoburger-ingrediente-categoria-title {
+    font-size: 25px;
+    font-weight: 200;
+    border-bottom: 1px solid white;
+    margin: 20px 10px 10px 10px;
   }
 }

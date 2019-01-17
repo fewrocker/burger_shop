@@ -5,8 +5,6 @@ function l(x) {
   console.log(x);
 }
 
-l('oi')
-
 expandBtn = document.getElementsByClassName('carrinho-expand-btn')[0]
 expandContentCarrinho = document.getElementsByClassName('container-carrinho')[0]
 checkoutBox = document.getElementsByClassName('container-carrinho-header-expand')[0]
@@ -38,6 +36,17 @@ if (screen.width > 800) {
 }
 // -------------------------------------------------------------------------------
 
+// ------------------------------------------------------------------------------
+// On desktop, make the cart at least the same size as the menu
+posLastCard = document.getElementsByClassName('bebida-card')
+posLastCard = posLastCard[posLastCard.length - 1].getBoundingClientRect().bottom;
+posTopCart = checkoutBox.getBoundingClientRect().bottom;
+
+if (screen.width > 800) {
+  expandContentCarrinho.style.minHeight = (posLastCard - posTopCart) + 'px'
+}
+// -------------------------------------------------------------------------------
+
 expandBtn.addEventListener('click', function() {
   if (expandContentCarrinho.style.display === "none") {
     // ------------------------------------------------------------------------------
@@ -52,10 +61,11 @@ expandBtn.addEventListener('click', function() {
     // -------------------------------------------------------------------------------
 
     expandContentCarrinho.style.display = ""
-
+    expandBtn.innerHTML = "Close details"
 
   } else {
     expandContentCarrinho.style.display = "none"
+    expandBtn.innerHTML = "Open details"
   }
 });
 

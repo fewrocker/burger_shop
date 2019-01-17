@@ -93,7 +93,7 @@ i.nome = "Corn"
 i.categoria = "Acompanhamentos"
 i.preco_normal = 0.50
 i.preco_extra = 0.50
-i.possiveis_quantidades = ["None", "One", "Double"]
+i.possiveis_quantidades = ["None", "Normal", "Extra"]
 i.save
 p "Criado ingrediente #{i.nome}"
 
@@ -102,7 +102,7 @@ i.nome = "Potato sticks"
 i.categoria = "Acompanhamentos"
 i.preco_normal = 0.40
 i.preco_extra = 0.40
-i.possiveis_quantidades = ["None", "One", "Double"]
+i.possiveis_quantidades = ["None", "Normal", "Extra"]
 i.save
 p "Criado ingrediente #{i.nome}"
 

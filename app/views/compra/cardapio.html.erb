@@ -154,7 +154,7 @@
         </div>
       </div>
       <button class="carrinho-expand-btn btn btn-secondary">
-        (+) &nbsp;Open details
+        Open details
       </button>
       <%= link_to "/addresspick?possuiendereco=#{@carrinho.enderecoid.nil?}" do %>
         <button class="btn btn-success concluir-pedido-btn"> Checkout </button>
@@ -202,19 +202,21 @@
             </div>
           <% end %>
         </div>
+      </div>
 
-        <h2 class="carrinho-subtitle">
-          &nbsp;&nbsp;
-          <img src="https://static.thenounproject.com/png/583455-200.png" alt="" style="width: 50px;">
-          Drinks
-        </h2>
+      <h2 class="carrinho-subtitle">
+        &nbsp;&nbsp;
+        <img src="https://static.thenounproject.com/png/583455-200.png" alt="" style="width: 50px;">
+        Drinks
+      </h2>
 
+      <div class="row carrinho-conteudo" style="">
         <div class="col-xs-12">
           <% @carrinho_bebidas.each do |bebida| %>
             <div class="carrinho-item-bebida">
               <div class="carrinho-bebida-header">
                 <h2 class="carrinho-bebida-nome">
-                  <%= bebida.bebida %> <br>x <%= bebida.quantidade %>
+                  <%= bebida.bebida %> x <%= bebida.quantidade %>
                 </h2>
                 <h2 class="carrinho-bebida-preco-cont">
                   <% if bebida.preco.to_s.split('.')[1].length == 2 %>
@@ -235,7 +237,6 @@
           <% end %>
         </div>
       </div>
-
     </div>
   </div>
 </div>

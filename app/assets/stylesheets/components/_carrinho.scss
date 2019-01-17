@@ -36,9 +36,13 @@
 }
 
 .carrinho-subtitle {
-  font-size: 30px;
+  font-size: 28px;
+
+  font-weight: 300;
 
   color: rgba(70,70,70,1);
+
+  margin-top: 10px;
 }
 
 .menu-title {
@@ -71,7 +75,7 @@
   color: white;
   padding-left: 10px;
 
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .carrinho-burger-preco {
@@ -85,6 +89,7 @@
 .carrinho-burger-excluir {
   padding-right:  30px;
   margin: 10px 0;
+  font-size: 18px;
 
   i {
     color: rgba(200,200,200,1);
@@ -99,6 +104,9 @@
 .carrinho-item-burger-ingredientes {
   background-color: rgba(150,150,150,1);
   padding: 5px 0 5px 20px;
+
+  font-size: 18px;
+  font-weight: lighter;
 }
 
 .carrinho-item-burger-ingrediente {
@@ -126,7 +134,7 @@
   padding-left: 10px;
   padding-top: 10px;
 
-  font-size: 20px;
+  font-size: 18px;
 
   flex: 0 0 60%;
 }
@@ -134,7 +142,7 @@
 .carrinho-bebida-preco {
   color: white;
 
-  font-size: 20px;
+  font-size: 18px;
   margin: 0;
 
   flex: 0 0 20%;
@@ -210,7 +218,7 @@
 
   .carrinho-burger-excluir {
     padding-right: 30px;
-    margin: 0;
+    margin-top: 20px;
 
     i {
       font-size: 20px;

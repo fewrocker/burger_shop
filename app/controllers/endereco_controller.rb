@@ -6,7 +6,7 @@ class EnderecoController < ApplicationController
     # Se um endereco ja foi selecionado para esse carrinho, pular a etapa de selecionar endereco
     redirect_to checkout_path if params[:possuiendereco] == "false"
 
-    @enderecos = @user.enderecos
+    @enderecos = @user.enderecos.select {|endereco| endereco.status == true}
 
     @temendereco = @enderecos.length != 0
   end
@@ -42,10 +42,14 @@ class EnderecoController < ApplicationController
   end
 
   def destroy
+    # The address does not get destroyed. It simply becomes unactive, so previous orders
+    # with that address don't get corrupted
     endereco = Endereco.find(params[:id])
     enderecoid = endereco.id
 
-    endereco.destroy
+    endereco.status = false
+
+    endereco.save
 
     # Retirar enderecoid do pedido caso o usuario exclua o endereco que esta sendo usado para entrega (anti-bug)
     carrinho = Pedido.all.select { |pedido| pedido.user == current_user && pedido.status == 'em compras'}

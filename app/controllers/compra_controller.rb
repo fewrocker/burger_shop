@@ -76,7 +76,7 @@ class CompraController < ApplicationController
     # Se um endereco ja foi selecionado para esse carrinho, pular a etapa de selecionar endereco
     redirect_to checkout_path if params[:possuiendereco] == "false"
 
-    @enderecos = @user.enderecos
+    @enderecos = @user.enderecos.select {|endereco| endereco.status == true}
 
     @temendereco = @enderecos.length != 0
   end
