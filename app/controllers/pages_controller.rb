@@ -11,19 +11,19 @@ class PagesController < ApplicationController
     # Para o horario de fechamento: 24h significa meia noite do proximo dia, 26h significa ate
     # 2 horas da manha do dia seguinte, etc
     # Segunda feira: 08h as 22h
-    @open_hours[1] = [8,22]
+    @open_hours[1] = [8, 22]
     # Terca feira: 08h as 22h
-    @open_hours[2] = [8,22]
+    @open_hours[2] = [8, 22]
     # Quarta feira: 08h as 00h
-    @open_hours[3] = [8,24]
+    @open_hours[3] = [8, 24]
     # Quinta feira: 08h as 00h
-    @open_hours[4] = [8,24]
+    @open_hours[4] = [8, 24]
     # Sexta feira: 08h as 02h
-    @open_hours[5] = [8,26]
+    @open_hours[5] = [8, 26]
     # Sabado: 08h as 02h
-    @open_hours[6] = [8,26]
+    @open_hours[6] = [8, 26]
     # Domingo: 08h as 24h
-    @open_hours[0] = [8,24]
+    @open_hours[0] = [8, 24]
 
     @weekday_name = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday']
 

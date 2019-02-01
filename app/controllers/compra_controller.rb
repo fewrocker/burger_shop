@@ -1,7 +1,7 @@
 class CompraController < ApplicationController
 
   def cardapio
-    # Criar um carrinho caso o usuario nao tenha um carrinho aberto
+    # If there are no "open" orders, create one so the user can start shopping
     if current_user.pedidos.select { |pedido| pedido.status == 'em compras'}.length == 0
       p = Pedido.new
       p.user = current_user
@@ -10,9 +10,9 @@ class CompraController < ApplicationController
       p.save
     end
 
-    # Atualizar status dos pedidos antes de mostrar algo
+    # Update the order status
     Pedido.all.select {|pedido| pedido.status == 'em preparo' || pedido.status == 'saiu para entrega' }.each do |pedido|
-      timeelapsed = ((Time.now - pedido.horario)/60).round(0)
+      timeelapsed = ((Time.now - pedido.horario) / 60).round(0)
 
       if timeelapsed > 15 && timeelapsed <= 30
         pedido.status = 'saiu para entrega'
@@ -23,7 +23,11 @@ class CompraController < ApplicationController
       end
     end
 
-    # Criar mensagem de pedido em andamento caso haja algum
+    # Create the "You have active orders" for user if he has one
+    # The controller checks for orders on the database related to the current_user
+    # And which has the status equals to one of the active order status
+    # "Cooking" or "Out for delivery"
+
     if Pedido.all.select { |pedido| pedido.user == current_user && (pedido.status == 'em preparo' || pedido.status == 'saiu para entrega') }.length != 0
       @pedidos_em_aberto = true
     else
@@ -33,17 +37,21 @@ class CompraController < ApplicationController
     # URL params to open/close cart
     @active_orders = params[:cart] == 'o'
 
-    # Separar os itens do cardapio
+    # Separate the items for the cart in burgers and drinks
     @lanches = Burger.all
     @bebidas_soft = Bebida.all.select { |bebida| bebida.categoria == 'Soft' }
     @bebidas_cervejas = Bebida.all.select { |bebida| bebida.categoria == 'Cervejas' }
 
-    # Montar o carrinho do usuário que está em aberto
+    # Select the current open order for the user
+    # Get the order which is related to current_user and has status "Shopping"
     @carrinho = Pedido.all.select { |pedido| pedido.user == current_user && pedido.status == 'em compras' }[0]
     @carrinho_burgers = @carrinho.pedidoburgers
     @carrinho_bebidas = @carrinho.pedidobebidas
 
-    # Calcula o total do preço do carrinho a partir dos componentes
+    # Calculates the current order total
+    # By adding the value of all items in the order
+    # The price of all ingredients on the burger are already saved on the burger_order
+
     @carrinho_total = 0
     @carrinho_burgers.each do |burger|
       @carrinho_total += burger.preco

@@ -4,6 +4,7 @@
 <% end %>
 
 <!-- Active orders banner -->
+<!-- If there are active orders, show a banner with a link to My Orders tab -->
 <% if @pedidos_em_aberto %>
   <div class="alert-pedidosemaberto text-center">
     <h4 class="alert-pedidosemaberto-text">
@@ -13,16 +14,21 @@
   </div>
 <% end %>
 
+<!-- Menu contents -->
 <div class="wrapper-cardapio">
   <div class="container-cardapio">
-
+<!-- Menu title -->
     <%= image_tag 'menutitle.png', class:"menu-title" %>
 
+<!-- Starts with burgers -->
     <div class="container-cardapio-lanches">
       <h1 class="cardapio-title-1 cardapio-title-burger">
         Burgers
       </h1>
 
+<!-- Iterate through all burgers in the database -->
+<!-- Show name, price and ingredients -->
+<!-- Each card is a link to the burger customization file -->
       <div class="row container-burgers-content">
         <% @lanches.each do |lanche| %>
           <%= link_to(pedidoburger_path + "?burger=#{lanche.nome}", class: "burger-card-link") do %>
@@ -34,6 +40,13 @@
                   <div class="burger-card-nome">
                     <%= lanche.nome %>
                   </div>
+
+                  <!-- Burger base ingredients -->
+                  <!-- Iterate through all base ingredients on the burger -->
+                  <!-- If ingredient is not the last, put a comma after the ingredient name -->
+                  <!-- If it is, do not put any comma -->
+                  <!-- If burger name is "every-fucking-thing", instead of showing all ingredients one by one, just put a text saying what this burger is all about! -->
+
                   <div class="burger-card-ingredientes">
                     <% if lanche.nome != 'Every-fucking-thing' %>
                       <% lanche.ingredientes_base.each do |ingrediente| %>
@@ -47,6 +60,13 @@
                       Literally everything we have stuck inside your burger
                     <% end %>
                   </div>
+
+                  <!-- Burger price -->
+                  <!-- A logic is used to handle the price display -->
+                  <!-- Since prices are usually displayed in a .00 fashion -->
+                  <!-- If burger price is y.xx with x not 0, display as PRICE only, no modifications necessary -->
+                  <!-- If burger price is y.x0, display as PRICE + 0 -->
+
                   <div class="burger-card-preco">
                     <% if lanche.preco_base.to_s.split('.')[1].length == 2 %>
                       $<%= lanche.preco_base %>
@@ -62,6 +82,10 @@
       </div>
     </div>
 
+<!-- Time for the drinks! -->
+<!-- Iterate through all drinks in the database -->
+<!-- Show name and price -->
+<!-- Each card is a link to show a pop-up model related to that drink -->
     <div class="container-cardapio-bebidas">
       <h1 class="cardapio-title-1 cardapio-title-drinks">
         Drinks
@@ -91,7 +115,7 @@
               </div>
             <% end %>
 
-            <div class="modal fade" id="<%= "bebida-modal-#{bebida_counter}" %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="<%= "bebida-modal-#{bebida_counter}" %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px;">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -135,6 +159,12 @@
     </div>
   </div>
 
+<!-- Order summary -->
+<!-- Show order total and has a button to expand order details -->
+<!-- Order details include all items on the order divided in burgers and drinks -->
+<!-- Burgers show all ingredients and quantities ordered -->
+<!-- Drinks show drink and quantity ordered -->
+<!-- All items can be deleted from order by clicking on the X icon -->
   <div class="carrinho-whole">
     <div class="container-carrinho-header-expand text-center">
       <div class="container-carrinho-header">
@@ -172,20 +202,34 @@
           <% @carrinho_burgers.each do |burger| %>
             <div class="carrinho-item-burger">
               <div class="carrinho-burger-header">
+                <!-- Burger name -->
                 <h2 class="carrinho-burger-name"> <%= burger.burger %> </h2>
+
+                <!-- Burger price -->
+                <!-- Same logic as in menu -->
+
                 <% if burger.preco.to_s.split('.')[1].length == 2 %>
                   <h2 class="carrinho-burger-preco">$ <%= burger.preco %> </h2>
                 <% else %>
                   <h2 class="carrinho-burger-preco">$ <%= burger.preco %>0 </h2>
                 <% end %>
+
+                <!-- Remove from order button -->
+                <!-- This process raises a confirmation box -->
                 <h2 class="carrinho-burger-excluir">
                   <%= link_to pedidoburger_path + "/#{burger.id}",
                     method: :delete,
-                    data: { confirm: "Tem certeza que deseja exluir #{burger.burger}?" } do %>
+                    data: { confirm: "Are you sure you want to delete #{burger.burger}?" } do %>
                       <i class="fas fa-times-circle"></i>
                     <% end %>
                 </h2>
               </div>
+
+              <!-- To display the ingredients, iterate through all ingredients related to burger order -->
+              <!-- Quantities can be 0 (none), 1 (normal) or 2(extra) -->
+              <!-- If quantity is 0, the ingredient is not shown -->
+              <!-- If quantity is 1 or 2, the related quantity will be shown -->
+
               <div class="carrinho-item-burger-ingredientes">
                 <% (0..Ingrediente.all.length).to_a.each do |num| %>
                   <% if burger.quantidades[num] == '1' %>
@@ -203,6 +247,9 @@
           <% end %>
         </div>
       </div>
+
+      <!-- The drinks use the same logic but simpler! (No ingredients to be shown) -->
+      <!-- The quantity of the beverage is displayed as Beverage name x quantity -->
 
       <h2 class="carrinho-subtitle">
         &nbsp;&nbsp;
@@ -228,7 +275,7 @@
                 <h2 class="carrinho-burger-excluir">
                   <%= link_to pedidobebida_path + "/#{bebida.id}",
                     method: :delete,
-                    data: { confirm: "Tem certeza que deseja exluir #{bebida.bebida}?" } do %>
+                    data: { confirm: "Are you sure you want to delete #{bebida.bebida}?" } do %>
                       <i class="fas fa-times-circle"></i>
                     <% end %>
                 </h2>

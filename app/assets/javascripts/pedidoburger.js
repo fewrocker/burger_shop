@@ -1,10 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+// The goal of this function is to handle the user interaction while customizing his burger
+// The view shows all ingredients and all possible quantities for each ingredient with its price
+// Ingredients start highlighted as Normal if the ingredient is a base ingredient for the burger
+// Or start highlighted at none if not present
+// If ingredient is a base ingredient, its normal cost is zero and extra cost is equal to ingredient_cost
+// If ingredient is not a base ingredient, normal cost is ingredient_cost and extra cost is equal to 2 * ingredient_cost
+// If user picks another configuration, highlight the selected option as user feedback
+// Only one quantity can be picked for each ingredient, so if one quantity is picked, all the other highlights turns off
+// Also, update the order price so the user can see how much the changes are costing
+
+// Support functions
 // Log shortcut
 function l(x) {
   console.log(x);
 }
 
+// Get the index of the element related to its sibling elements on the Parent ChildNodes array
 function index(el) {
     var children = el.parentNode.childNodes,
         i = 0;
@@ -22,7 +34,10 @@ var formatter = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 2,
 });
 
-//Funcao: Entra com o innerHTML com um valor do tipo $x.yz string e sai como x.yz decimal
+//Get the price of the ingredient from the HTML
+// Input is of type "$x.yz" as an HTML string
+// Output is a float with the value x.yz
+
 function getValue(div) {
   valor = div.innerHTML.trim()
 
@@ -33,7 +48,9 @@ function getValue(div) {
   return parseFloat(valor)
 }
 
-//Elementos
+// -------------------------------------------------------------------
+
+//Get needed elements
 ingredientQuantity = document.getElementsByClassName('ingrediente-quantidade')
 ingredientNames = document.getElementsByClassName('ingrediente-nome')
 ingredientFormInputs = document.getElementsByClassName('ingrediente-quantidade-input')
@@ -46,13 +63,16 @@ precosIngredientes = document.getElementsByClassName('ingrediente-preco')
 
 continuarBotao = document.getElementById('comprar-burger-btn')
 
-//Atualizar preco botao
+//Update the base price to the base price of the burger
 continuarBotao.value = 'Add to order ($' + formatter.format(getValue(precoBase)).toString() + ')'
 
+// Save the base price of the burger, so when the user makes changes,
+// You can see the initial base price and the additional price
 precoBaseValor = getValue(precoBase)
 precoInput.value = formatter.format(precoBaseValor).toString()
 
-//Ingredientes base - default value
+//If ingredient is a base ingredient, start highlight at "normal"
+//If ignredient is not base ingredient, start highlight at "none"
 Array.prototype.forEach.call(ingredientFormInputs, formInput => {
   formInputGroup = (index(formInput) - 5) / 2
 
@@ -65,35 +85,40 @@ Array.prototype.forEach.call(ingredientFormInputs, formInput => {
   }
 });
 
-l(ingredientNames)
+// Update the value on Rails form of each ingredient quantity
+// If X is the number of ingredients in the Shop
+// There are X inputs for the ingredient names
+// And X inputs for the ingredient quantities
 Array.prototype.forEach.call(ingredientFormInputsName, formInput => {
-  //Pega o index do forminput do tipo nome
-  //Pega o index do input no form e substrai quantos inputs do tipo quantidade existe
-  //Isso porque os form inputs de quantidade vem antes dos form inputs de nome
-  //Logo, os form inputs de nome comecam em um index apos o ultimo form input de quantidade
   formInputGroup = (index(formInput) - 5) / 2 - ingredientFormInputs.length
-
   formInput.value = ingredientNames[formInputGroup].innerHTML.trim()
-
 });
 
-// Mudanca entre ingredientes
+// User clicks on a new quantity to customizse the burger
 Array.prototype.forEach.call(ingredientQuantity, quantity => {
-  // Event listener de clique em cada um das janelas de ingrediente
+  // Event listener listens to the click
   quantity.addEventListener('click', function() {
 
-    //Definir qual instancia de quantidade de ingrediente foi clicada
+    // Define which ingredient is being changed
+    // Define globalClicked as the quantity index between all quantities on the page
+    // This means: if there are 10 ingredients with 3 options, there are 30 global options
+    // globalClicked is the global button clicked
+    // From the global button, you can derive which ingredient and which quantity was selected
+    // For example, if the button clicked was the 16th button of quantity on the page,
+    // It is clear that it is related to the 6th ingredient on the page
+    // and that the quantity selected was "None"
+    // This is because there were 15 elements before it from the first 5th ingredients
+    // And the 16th button is the first option for the 6th ingredient
+
     var allQuantities = [].slice.call(ingredientQuantity);
+    // Global element
     globalClicked = allQuantities.indexOf(quantity)
-    // Obter qual o grupo clicado a partir da instancia
+    // Ingredient group
     groupClicked = (globalClicked - globalClicked % 3) / 3
-    // Obter qual a posicao do grupo clicado a partir da instancia
+    // Quantity inside ingredient
     optionClicked = globalClicked - 3 * groupClicked
 
-    // l(optionClicked)
-    // l(groupClicked)
-    // l(globalClicked)
-
+    // Get which quantity was previously selected
     if (ingredientQuantity[groupClicked * 3].classList.contains('ingrediente-ativo')) {
       previousOption = groupClicked * 3
     } else if (ingredientQuantity[groupClicked * 3 + 1].classList.contains('ingrediente-ativo')) {
@@ -102,32 +127,37 @@ Array.prototype.forEach.call(ingredientQuantity, quantity => {
       previousOption = groupClicked * 3 + 2
     }
 
-    // Apagar todas as caixas daquele ingrediente ()
+    // Erase all highlights from this ingredient group
     ingredientQuantity[groupClicked * 3].classList.remove('ingrediente-ativo')
     ingredientQuantity[groupClicked * 3 + 1].classList.remove('ingrediente-ativo')
     ingredientQuantity[groupClicked * 3 + 2].classList.remove('ingrediente-ativo')
-    // Acender a caixa que foi clicada
+    // Highlight the selected quantity
     ingredientQuantity[globalClicked].classList.add('ingrediente-ativo')
-    // Atualizar o input do form
+    // Update the form value
     ingredientFormInputs[groupClicked].value = optionClicked.toString()
 
-    //Atualizar o preco do sanduiche
+    //Update the total burger price, and the additional customization price
     precoExtraValorAntigo = getValue(precoExtra)
 
-    l(precoExtraValorAntigo)
-
+    // Get price of previous selected option
     precoExtraIngredienteAnterior = getValue(precosIngredientes[previousOption])
+    // Get price of new selected option
     precoExtraIngredienteAtual = getValue(precosIngredientes[globalClicked])
 
+    // Set the new extra price as the variation of new option price minus old option price
     precoExtraValorNovo = precoExtraValorAntigo + (precoExtraIngredienteAtual - precoExtraIngredienteAnterior)
 
+    // Update the extra price innerHTML
     precoExtra.innerHTML = '+' + formatter.format(precoExtraValorNovo).toString()
 
+    // Calculate the total price as base value (saved and store) and the current extra price
     precoTotal = precoBaseValor + precoExtraValorNovo
 
+    // Change the total price on form
     precoInput.value = formatter.format(precoTotal).toString()
 
-    continuarBotao.value = 'Fazer pedido ($' + formatter.format(precoTotal).toString() + ')'
+    // Change the HTML of the "Place order" button to show the correct total value
+    continuarBotao.value = 'Place order ($' + formatter.format(precoTotal).toString() + ')'
   });
 });
 
