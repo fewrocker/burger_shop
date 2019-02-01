@@ -25,7 +25,7 @@ class PagesController < ApplicationController
     # Domingo: 08h as 24h
     @open_hours[0] = [8, 24]
 
-    @weekday_name = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday']
+    @weekday_name = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
     datetime = Time.now
 
